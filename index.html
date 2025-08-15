@@ -222,18 +222,18 @@ button{
 /* =================== BANCO FICTÍCIO =================== */
 const bancoQuestoes = [
   /* ÁLGEBRA */
-  {codigo:"ALG-001",disciplina:"Matemática",area:"Álgebra",ano:"2023",banca:"Banca X",orgao:"Orgão Y",prova:"Prova A",
-    pergunta:"Resolva a equação: \\(3x + 5 = 20\\).",imagem:"",
-    alternativas:["$x = 5$","x = 10","x = 15","x = 20"],correta:0},
+  {codigo:"ALG-001",disciplina:"Matemática",area:"Álgebra",ano:"2023",banca:"CAED",orgao:"AVALIAÇÃO CONTÍNUA DA APRENDIZAGEM NOS ANOS FINAIS – CICLO II",prova:"9º ano do Ensino Fundamental.",
+    pergunta:"Observe a equação polinomial apresentada no quadro abaixo. $$2x^2+4x - 30=0$$Qual é o conjunto solução dessa equação?",imagem:"",
+    alternativas:["$S = \\{–10, 6\\}$","$S = \\{–5, 3\\}$","$S = \\{2, 4\\}$","$S = \\{15, 26\\}$"],correta:1},
   {codigo:"ALG-002",disciplina:"Matemática",area:"Álgebra",ano:"2022",banca:"Banca X",orgao:"Orgão Z",prova:"Prova B",
-    pergunta:"Simplifique a expressão: $$2(x+3) - x$$.",imagem:"",
-    alternativas:["x + 3","2x + 3","x + 6","2x + 6"],correta:2},
+    pergunta:"Simplifique a expressão: $2(x+3) - x$.",imagem:"",
+    alternativas:["$x + 3$","$2x + 3$","$x + 6$","$2x + 6$"],correta:2},
   {codigo:"ALG-003",disciplina:"Matemática",area:"Álgebra",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"O valor de a em 5a - 10 = 0 é:",imagem:"",
-    alternativas:["-2","0","2","10"],correta:2},
+    pergunta:"O valor de $a$ em $5a - 10 = 0$ é:",imagem:"",
+    alternativas:["$-2$","$0$","$2$","$10$"],correta:2},
   {codigo:"ALG-004",disciplina:"Matemática",area:"Álgebra",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"Se f(x)=2x+1, então f(4) é:",imagem:"",
-    alternativas:["7","8","9","10"],correta:2},
+    pergunta:"Se $f(x)=2x+1$, então $f(4)$ é:",imagem:"",
+    alternativas:["$7$","$8$","$9$","$10$"],correta:2},
 
   /* GEOMETRIA */
   {codigo:"GEO-001",disciplina:"Matemática",area:"Geometria",ano:"2023",banca:"Banca X",orgao:"Orgão Y",prova:"Prova A",
@@ -243,7 +243,7 @@ const bancoQuestoes = [
     pergunta:"Qual é o perímetro de um quadrado de lado 5 cm?",imagem:"",
     alternativas:["10 cm","15 cm","20 cm","25 cm"],correta:2},
   {codigo:"GEO-003",disciplina:"Matemática",area:"Geometria",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"Identifique a figura:",imagem:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Equilateral_triangle.svg/240px-Equilateral_triangle.svg.png",
+    pergunta:"Identifique a figura:",imagem:"ima01",
     alternativas:["Círculo","Triângulo equilátero","Retângulo","Trapézio"],correta:1},
   {codigo:"GEO-004",disciplina:"Matemática",area:"Geometria",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
     pergunta:"Um retângulo tem base 8 e altura 3. Sua área é:",imagem:"",
@@ -268,11 +268,11 @@ const bancoQuestoes = [
     pergunta:"Dos 180 mL de um produto químico industrial, 25% são solventes, e destes, 20% são álcool. O volume de álcool nesse produto corresponde, então, a",imagem:"",
     alternativas:["9mL.","12mL.","18mL.","24mL."],correta:0},
   {codigo:"NO-002",disciplina:"Matemática",area:"Números e Operações",ano:"2022",banca:"VUNESP",orgao:"Pref. Itatiba/SP",prova:"Almoxarife - Fundamental",
-    pergunta:"Durante uma campanha de conscientização ambiental, 50 pessoas fizeram contribuições para organizações não governamentais (ONG) atuantes na defesa do meio ambiente; 20 dessas pessoas doaram R$ 1.500,00, e as demais, R$ 1.800,00. O valor total foi então recolhido e repartido, em partes iguais, entre 3 ONG, cada uma das quais recebeu, portanto,",imagem:"",
+    pergunta:"Durante uma campanha de conscientização ambiental, 50 pessoas fizeram contribuições para organizações não governamentais (ONG) atuantes na defesa do meio ambiente; 20 dessas pessoas doaram \\(R$ 1.500,00\\), e as demais, \\(R$ 1.800,00\\). O valor total foi então recolhido e repartido, em partes iguais, entre 3 ONG, cada uma das quais recebeu, portanto,",imagem:"",
     alternativas:["R$ 24.000,00.","R$ 25.000,00.","R$ 26.000,00.","R$ 28.000,00."],correta:3},
-  {codigo:"NO-003",disciplina:"Matemática",area:"Números e Operações",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"O dobro de 9 somado a 4 é:",imagem:"",
-    alternativas:["18","20","22","24"],correta:2},
+  {codigo:"NO-003",disciplina:"Matemática",area:"Números e Operações",ano:"2025",banca:"CAED",orgao:"AVALIAÇÃO CONTÍNUA DA APRENDIZAGEM NOS ANOS FINAIS – CICLO II",prova:"9º ano do Ensino Fundamental.",
+    pergunta:"O preço do ingresso de um parque de diversões custava 80 reais. O preço desse ingresso aumentou em 30% sobre o valor inicial. Qual foi o aumento, em reais, no preço do ingresso desse parque de diversões?",imagem:"",
+    alternativas:["240 reias.","104 reais","30 reais.","24 reais."],correta:3},
   {codigo:"NO-004",disciplina:"Matemática",area:"Números e Operações",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
     pergunta:"Qual é o resultado de 45 ÷ 5?",imagem:"",
     alternativas:["5","7","8","9"],correta:3},
@@ -410,12 +410,12 @@ function confirmarResposta(){
 
   if(respostaSelecionada===correta){
     document.getElementById("mensagem").innerHTML =
-      `<span class="msg-acerto">✅ Muito bem! Você acertou.</span><span id="particles">🎉</span>`;
+      `<span class="msg-acerto">✅  Muito bem! Você acertou.</span><span id="particles">🎉</span>`;
     somAcerto();
   } else {
     const textoCorreto = q.alternativas[correta];
     document.getElementById("mensagem").innerHTML =
-      `<span class="msg-erro">❌ Não foi dessa vez. Correta: ${textoCorreto}</span>`;
+      `<span class="msg-erro">❌  Resposta incorreta! </span>`;
     somErro();
   }
 
