@@ -155,7 +155,10 @@ function displayQuestion() {
         <p><strong>Assunto:</strong> ${currentQuestion.cabecalho.assunto}</p>
         <p><strong>Instituição:</strong> ${currentQuestion.cabecalho.instituicao}</p>
     `;
-    questionTextElement.textContent = currentQuestion.pergunta;
+    
+    // AQUI: Usando innerHTML para permitir que o MathJax renderize equações
+    questionTextElement.innerHTML = currentQuestion.pergunta;
+    
     currentQuestion.opcoes.forEach(option => {
         const button = document.createElement("button");
         button.textContent = `${option.letra}) ${option.texto}`;
