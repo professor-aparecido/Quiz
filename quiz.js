@@ -102,9 +102,9 @@ function displayQuestion() {
     const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
 
     questionHeaderInfo.innerHTML = `
-        <p><strong>Unidade:</strong> ${formattedTema}</p>
         <p><strong>Questão:</strong> ${currentQuestion.cabecalho.numero}</p>
         <p><strong>Habilidade BNCC:</strong> ${currentQuestion.cabecalho.habilidade_bncc}</p>
+        <p><strong>Unidade:</strong> ${formattedTema}</p>
         <p><strong>Série:</strong> ${currentQuestion.cabecalho.serie}</p>
         <p><strong>Assunto:</strong> ${currentQuestion.cabecalho.assunto}</p>
         <p><strong>Instituição:</strong> ${currentQuestion.cabecalho.instituicao}</p>
