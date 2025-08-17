@@ -1,0 +1,19 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF06MA07",
+            "serie": "6° ano",
+            "assunto": "Números Primos",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Qual dos seguintes é um número primo?",
+        "opcoes": [
+            {"letra": "A", "texto": "1"},
+            {"letra": "B", "texto": "9"},
+            {"letra": "C", "texto": "13"},
+            {"letra": "D", "texto": "15"}
+        ],
+        "resposta_correta": "C"
+    }
+]
