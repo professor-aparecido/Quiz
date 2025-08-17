@@ -12,39 +12,45 @@ let currentQuestionIndex = 0;
 let score = 0;
 let isAnswered = false;
 
-// Função para obter o parâmetro 'tema' da URL
-function getQuizTopic() {
+// Função para obter os parâmetros 'tema' e 'topico' da URL
+function getQuizParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('tema') || 'numeros'; // 'numeros' é o padrão se nenhum tema for encontrado
+    const tema = urlParams.get('tema') || 'numeros';
+    const topico = urlParams.get('topico') || null;
+    return { tema, topico };
 }
 
 // Função para carregar as questões do arquivo JSON
 async function loadQuestions() {
-    const topic = getQuizTopic();
-    const filePath = `quizzes/${topic}/${topic}.json`;
-    
+    const { tema, topico } = getQuizParams();
+
+    // Constrói o caminho do arquivo JSON dinamicamente
+    const filePath = `quizzes/${tema}/${topico}.json`;
+
     // Atualiza o título do quiz na página
-    quizTitleElement.textContent = `Quiz de ${topic.charAt(0).toUpperCase() + topic.slice(1)}`;
+    const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
+    const formattedTopico = topico ? topico.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Geral';
+    quizTitleElement.textContent = `Quiz de ${formattedTema} - ${formattedTopico}`;
 
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
-            throw new Error(`Erro ao carregar o quiz de ${topic}: ${response.statusText}`);
+            throw new Error(`Erro ao carregar o quiz de ${tema}/${topico}: ${response.statusText}`);
         }
         questions = await response.json();
+        
         if (questions.length > 0) {
             displayQuestion();
         } else {
-            questionTextElement.textContent = "Nenhuma questão encontrada para este tema.";
+            questionTextElement.textContent = "Nenhuma questão encontrada para este tópico.";
         }
     } catch (error) {
         console.error("Falha ao carregar as questões:", error);
-        questionTextElement.textContent = "Erro ao carregar o quiz. Por favor, verifique o tema na URL ou o arquivo JSON.";
+        questionTextElement.textContent = "Erro ao carregar o quiz. Verifique a URL ou o arquivo JSON.";
     }
 }
 
-// As funções abaixo (displayQuestion, selectOption, checkAnswer, nextQuestion, endQuiz) permanecem as mesmas
-// que criamos anteriormente, com a diferença de que a variável 'questions' agora é preenchida dinamicamente.
+// As funções abaixo (displayQuestion, selectOption, checkAnswer, nextQuestion, endQuiz) permanecem as mesmas.
 
 function displayQuestion() {
     isAnswered = false;
@@ -52,6 +58,11 @@ function displayQuestion() {
     feedbackText.textContent = "";
     answerButton.style.display = "block";
     scoreText.classList.add("hidden");
+
+    if (currentQuestionIndex >= questions.length) {
+        endQuiz();
+        return;
+    }
 
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -126,15 +137,11 @@ function checkAnswer() {
 
 function nextQuestion() {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        const nextButton = document.getElementById("next-btn");
-        if (nextButton) {
-            nextButton.remove();
-        }
-        displayQuestion();
-    } else {
-        endQuiz();
+    const nextButton = document.getElementById("next-btn");
+    if (nextButton) {
+        nextButton.remove();
     }
+    displayQuestion();
 }
 
 function endQuiz() {
@@ -145,11 +152,6 @@ function endQuiz() {
     feedbackText.textContent = "";
     scoreText.textContent = `Sua pontuação final é: ${score} de ${questions.length}`;
     scoreText.classList.remove("hidden");
-    
-    const nextButton = document.getElementById("next-btn");
-    if (nextButton) {
-        nextButton.remove();
-    }
 }
 
 answerButton.addEventListener("click", checkAnswer);
