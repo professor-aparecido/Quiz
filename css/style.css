@@ -151,7 +151,6 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-top: 20px; /* Espaçamento entre o texto e os botões */
 }
 
 .unit-card {
@@ -250,51 +249,44 @@ body {
 .quizzes-page .hero-internal {
     background-color: #F4D03F;
     color: #2E86C1;
-    padding-bottom: 60px; /* Aumenta o espaço para os botões */
 }
 
 /* Estilos do Quiz */
 .quiz-box {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    max-width: 650px;
     margin: 40px auto;
-    text-align: center;
 }
 
-.quiz-header h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #2E86C1;
-}
-
-/* Estilos para o cabeçalho das questões do quiz */
-.question-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+/* Modificação para o cabeçalho da questão no estilo de tags */
+.question-info-grid.tag-style {
+    display: flex;
+    justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    border: 1px solid #eee;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
-.question-info-grid p {
+.question-info-grid.tag-style p {
     margin: 0;
     font-size: 14px;
-    color: #666;
-    border-left: 2px solid #5DADE2;
-    padding-left: 8px;
+    color: #4A4A4A;
+    background-color: #D3EAF8;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: none;
+    padding-left: 15px;
+    font-weight: 500;
 }
 
-.quiz-content #question-text {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
+/* Estilos para as alternativas do quiz */
 .options-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -303,12 +295,13 @@ body {
 
 .option-btn {
     background-color: #D3EAF8;
-    color: #4A4A4A;
+    color: #2E86C1;
     border: none;
     border-radius: 50px;
     padding: 15px 25px;
     font-size: 16px;
     cursor: pointer;
+    text-align: left;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -318,31 +311,24 @@ body {
 }
 
 .option-btn.selected {
-    border: 2px solid #5DADE2;
+    background-color: #fff;
+    border: 2px solid #2E86C1;
     transform: translateY(-2px);
 }
 
 .option-btn.correct {
     background-color: #82E0AA;
     color: #fff;
+    border: none;
 }
 
 .option-btn.incorrect {
     background-color: #E6B0AA;
     color: #fff;
+    border: none;
 }
 
-.quiz-footer {
-    margin-top: 30px;
-}
-
-#feedback-text {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-/* Estilos dos botões */
+/* Estilos dos botões padrão (Responder, etc.) */
 .btn {
     background-color: #5DADE2;
     color: #fff;
@@ -370,11 +356,11 @@ body {
     margin-top: 20px;
 }
 
-/* NOVO ESTILO: Para os botões de unidade no banner */
+/* Estilo para os cartões de unidade na página de quizzes */
 .unit-card-quiz {
-    background-color: #FFF;
+    background-color: #F8F8F8;
+    border: 2px solid #D3EAF8;
     color: #2E86C1;
-    border: 2px solid #2E86C1;
     padding: 15px 25px;
     border-radius: 50px;
     text-decoration: none;
@@ -402,7 +388,11 @@ body {
 
 /* Responsividade para a grade de unidades em telas pequenas */
 @media (max-width: 768px) {
-    .hero-internal .unit-grid {
+    .units .container {
+        padding: 0;
+    }
+
+    .unit-grid {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
