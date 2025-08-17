@@ -13,6 +13,7 @@ let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let isAnswered = false;
+let userAnswers = []; // Novo array para armazenar as respostas do usuário
 
 // --- FUNÇÕES DE SOM ---
 
@@ -182,7 +183,18 @@ function checkAnswer() {
     isAnswered = true;
     const currentQuestion = questions[currentQuestionIndex];
     const selectedOptionLetter = selectedButton.textContent.split(')')[0];
-    if (selectedOptionLetter === currentQuestion.resposta_correta) {
+    
+    const isCorrect = selectedOptionLetter === currentQuestion.resposta_correta;
+    
+    // Adiciona a resposta do usuário à lista de respostas
+    userAnswers.push({
+      pergunta: currentQuestion.pergunta,
+      suaResposta: selectedOptionLetter,
+      respostaCorreta: currentQuestion.resposta_correta,
+      acertou: isCorrect
+    });
+    
+    if (isCorrect) {
         score++;
         feedbackText.textContent = "Correto! 🎉";
         selectedButton.classList.add("correct");
@@ -190,7 +202,6 @@ function checkAnswer() {
     } else {
         feedbackText.textContent = "Incorreto. 😔";
         selectedButton.classList.add("incorrect");
-        // *** MUDANÇA AQUI: Não mostra mais a resposta correta imediatamente. ***
         somErro();
     }
     answerButton.style.display = "none";
@@ -223,8 +234,33 @@ function endQuiz() {
     scoreText.textContent = `Sua pontuação final é: ${score} de ${questions.length}`;
     scoreText.classList.remove("hidden");
     
-    // Futuro: Aqui você pode adicionar a lógica para mostrar todas as respostas
-    // Se quiser, podemos criar uma função para exibir o gabarito completo aqui.
+    // Exibe o gabarito
+    const gabaritoHTML = document.createElement("div");
+    gabaritoHTML.classList.add("gabarito-final");
+    gabaritoHTML.innerHTML = "<h3>Gabarito Completo</h3>";
+    
+    userAnswers.forEach((item, index) => {
+        const itemGabarito = document.createElement("p");
+        let status = item.acertou ? '✅ Correto' : '❌ Incorreto';
+        let suaResposta = item.acertou ? '' : ` (Sua resposta: ${item.suaResposta})`;
+        itemGabarito.innerHTML = `
+            <strong>${index + 1}.</strong> ${status} ${suaResposta}<br>
+            <strong>Pergunta:</strong> ${item.pergunta}<br>
+            <strong>Resposta Correta:</strong> ${item.respostaCorreta}
+        `;
+        gabaritoHTML.appendChild(itemGabarito);
+    });
+
+    const quizBox = document.querySelector('.quiz-box');
+    quizBox.appendChild(gabaritoHTML);
+    
+    // Opcional: Adicionar um botão para recomeçar o quiz
+    const restartButton = document.createElement("button");
+    restartButton.textContent = "Recomeçar Quiz";
+    restartButton.classList.add("btn");
+    restartButton.style.marginTop = "20px";
+    restartButton.addEventListener("click", () => window.location.reload());
+    quizBox.appendChild(restartButton);
 }
 
 answerButton.addEventListener("click", checkAnswer);
