@@ -34,7 +34,7 @@ function somAcerto(){
   o1.stop(t+0.36); o2.stop(t+0.36);
 }
 
-// Função para som de ERRO (mantive a sugestão original, que tem um som diferente)
+// Função para som de ERRO
 function somErro() {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const t = audioCtx.currentTime;
@@ -186,15 +186,12 @@ function checkAnswer() {
         score++;
         feedbackText.textContent = "Correto! 🎉";
         selectedButton.classList.add("correct");
-        somAcerto(); // CHAMA A FUNÇÃO DE SOM DE ACERTO
+        somAcerto();
     } else {
         feedbackText.textContent = "Incorreto. 😔";
         selectedButton.classList.add("incorrect");
-        const correctButton = Array.from(optionsContainer.children).find(btn => btn.textContent.startsWith(currentQuestion.resposta_correta));
-        if (correctButton) {
-            correctButton.classList.add("correct");
-        }
-        somErro(); // CHAMA A FUNÇÃO DE SOM DE ERRO
+        // *** MUDANÇA AQUI: Não mostra mais a resposta correta imediatamente. ***
+        somErro();
     }
     answerButton.style.display = "none";
     const nextButton = document.createElement("button");
@@ -225,6 +222,9 @@ function endQuiz() {
     feedbackText.textContent = "";
     scoreText.textContent = `Sua pontuação final é: ${score} de ${questions.length}`;
     scoreText.classList.remove("hidden");
+    
+    // Futuro: Aqui você pode adicionar a lógica para mostrar todas as respostas
+    // Se quiser, podemos criar uma função para exibir o gabarito completo aqui.
 }
 
 answerButton.addEventListener("click", checkAnswer);
