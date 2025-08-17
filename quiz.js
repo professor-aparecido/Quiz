@@ -14,6 +14,43 @@ let currentQuestionIndex = 0;
 let score = 0;
 let isAnswered = false;
 
+// --- FUNÇÕES DE SOM ---
+// Função para som de ACERTO
+function somAcerto() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const t = audioCtx.currentTime;
+    const gainNode = audioCtx.createGain();
+    gainNode.gain.setValueAtTime(0.01, t);
+    gainNode.gain.exponentialRampToValueAtTime(0.1, t + 0.05);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, t);
+    osc.frequency.exponentialRampToValueAtTime(880, t + 0.2);
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    osc.start(t);
+    osc.stop(t + 0.3);
+}
+
+// Função para som de ERRO
+function somErro() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const t = audioCtx.currentTime;
+    const gainNode = audioCtx.createGain();
+    gainNode.gain.setValueAtTime(0.01, t);
+    gainNode.gain.exponentialRampToValueAtTime(0.1, t + 0.05);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.2);
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(150, t);
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    osc.start(t);
+    osc.stop(t + 0.2);
+}
+// --- FIM DAS FUNÇÕES DE SOM ---
+
 // Função para obter os parâmetros 'tema' e 'topico' da URL
 function getQuizParams() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -25,24 +62,19 @@ function getQuizParams() {
 // Função para exibir a lista de tópicos
 async function displayTopicsList() {
     const { tema } = getQuizParams();
-
     topicsListContainer.style.display = "block";
     quizContainer.style.display = "none";
-    
     if (!tema) {
         topicsButtonsContainer.innerHTML = `<p>Selecione uma unidade no topo da página para ver os tópicos.</p>`;
         return;
     }
-
     const filePath = `quizzes/${tema}/${tema}-temas.json`;
-
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
             throw new Error(`Erro ao carregar a lista de tópicos. Verifique se o arquivo ${filePath} existe.`);
         }
         const topics = await response.json();
-        
         topicsButtonsContainer.innerHTML = "";
         topics.forEach(topic => {
             const button = document.createElement("a");
@@ -51,7 +83,6 @@ async function displayTopicsList() {
             button.textContent = topic.nome;
             topicsButtonsContainer.appendChild(button);
         });
-
     } catch (error) {
         console.error("Falha ao carregar a lista de tópicos:", error);
         topicsButtonsContainer.innerHTML = `<p>Não foi possível carregar os tópicos. Verifique o console para mais detalhes.</p>`;
@@ -61,19 +92,15 @@ async function displayTopicsList() {
 // Função para carregar as questões do arquivo JSON e exibir o quiz
 async function loadQuizByTopic() {
     const { tema, topico } = getQuizParams();
-    
     topicsListContainer.style.display = "none";
     quizContainer.style.display = "block";
-    
     const filePath = `quizzes/${tema}/${topico}.json`;
-
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
             throw new Error(`Erro ao carregar o quiz de ${tema}/${topico}: ${response.statusText}`);
         }
         questions = await response.json();
-        
         if (questions.length > 0) {
             displayQuestion();
         } else {
@@ -91,17 +118,13 @@ function displayQuestion() {
     feedbackText.textContent = "";
     answerButton.style.display = "block";
     scoreText.classList.add("hidden");
-
     if (currentQuestionIndex >= questions.length) {
         endQuiz();
         return;
     }
-
     const currentQuestion = questions[currentQuestionIndex];
     const { tema } = getQuizParams();
     let formattedTema;
-
-    // Lógica para formatar o nome da unidade com acentuação
     switch(tema) {
         case 'numeros':
             formattedTema = 'Números';
@@ -121,7 +144,6 @@ function displayQuestion() {
         default:
             formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
     }
-
     questionHeaderInfo.innerHTML = `
         <p><strong>Questão:</strong> ${currentQuestion.cabecalho.numero}</p>
         <p><strong>Unidade:</strong> ${formattedTema}</p>
@@ -130,9 +152,7 @@ function displayQuestion() {
         <p><strong>Assunto:</strong> ${currentQuestion.cabecalho.assunto}</p>
         <p><strong>Instituição:</strong> ${currentQuestion.cabecalho.instituicao}</p>
     `;
-
     questionTextElement.textContent = currentQuestion.pergunta;
-
     currentQuestion.opcoes.forEach(option => {
         const button = document.createElement("button");
         button.textContent = `${option.letra}) ${option.texto}`;
@@ -164,6 +184,7 @@ function checkAnswer() {
         score++;
         feedbackText.textContent = "Correto! 🎉";
         selectedButton.classList.add("correct");
+        somAcerto(); // CHAMA A FUNÇÃO DE SOM DE ACERTO
     } else {
         feedbackText.textContent = "Incorreto. 😔";
         selectedButton.classList.add("incorrect");
@@ -171,6 +192,7 @@ function checkAnswer() {
         if (correctButton) {
             correctButton.classList.add("correct");
         }
+        somErro(); // CHAMA A FUNÇÃO DE SOM DE ERRO
     }
     answerButton.style.display = "none";
     const nextButton = document.createElement("button");
