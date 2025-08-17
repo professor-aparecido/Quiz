@@ -1,5 +1,4 @@
 // Selecionar elementos HTML
-const quizTitleElement = document.getElementById("quiz-title");
 const questionHeaderInfo = document.getElementById("question-header-info");
 const questionTextElement = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
@@ -18,25 +17,29 @@ let isAnswered = false;
 // Função para obter os parâmetros 'tema' e 'topico' da URL
 function getQuizParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    const tema = urlParams.get('tema') || 'numeros';
-    const topico = urlParams.get('topico') || null;
+    const tema = urlParams.get('tema');
+    const topico = urlParams.get('topico');
     return { tema, topico };
 }
 
 // Função para exibir a lista de tópicos
 async function displayTopicsList() {
     const { tema } = getQuizParams();
-    const filePath = `quizzes/${tema}/${tema}-temas.json`;
-    
+
     topicsListContainer.style.display = "block";
     quizContainer.style.display = "none";
     
-    quizTitleElement.textContent = `Quizzes de ${tema.charAt(0).toUpperCase() + tema.slice(1)}`;
+    if (!tema) {
+        topicsButtonsContainer.innerHTML = `<p>Selecione uma unidade no topo da página para ver os tópicos.</p>`;
+        return;
+    }
+
+    const filePath = `quizzes/${tema}/${tema}-temas.json`;
 
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
-            throw new Error("Erro ao carregar a lista de tópicos.");
+            throw new Error(`Erro ao carregar a lista de tópicos. Verifique se o arquivo ${filePath} existe.`);
         }
         const topics = await response.json();
         
@@ -45,13 +48,13 @@ async function displayTopicsList() {
             const button = document.createElement("a");
             button.href = `quizzes.html?tema=${tema}&topico=${topic.id}`;
             button.className = "btn";
-            button.textContent = `${topic.nome}`; // Mudança aqui!
+            button.textContent = topic.nome;
             topicsButtonsContainer.appendChild(button);
         });
 
     } catch (error) {
         console.error("Falha ao carregar a lista de tópicos:", error);
-        topicsButtonsContainer.innerHTML = `<p>Não foi possível carregar os tópicos para este tema.</p>`;
+        topicsButtonsContainer.innerHTML = `<p>Não foi possível carregar os tópicos. Verifique o console para mais detalhes.</p>`;
     }
 }
 
@@ -62,13 +65,7 @@ async function loadQuizByTopic() {
     topicsListContainer.style.display = "none";
     quizContainer.style.display = "block";
     
-    // Constrói o caminho do arquivo JSON dinamicamente
     const filePath = `quizzes/${tema}/${topico}.json`;
-
-    // Atualiza o título do quiz
-    const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
-    const formattedTopico = topico.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    quizTitleElement.textContent = `Quiz de ${formattedTema} - ${formattedTopico}`;
 
     try {
         const response = await fetch(filePath);
