@@ -1,0 +1,36 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF08MA07",
+            "serie": "8° ano",
+            "assunto": "Equações de 1º grau",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Qual é o valor de x na equação 3x + 7 = 19?",
+        "opcoes": [
+            {"letra": "A", "texto": "4"},
+            {"letra": "B", "texto": "6"},
+            {"letra": "C", "texto": "12"},
+            {"letra": "D", "texto": "16"}
+        ],
+        "resposta_correta": "A"
+    },
+    {
+        "cabecalho": {
+            "numero": 2,
+            "habilidade_bncc": "EF08MA07",
+            "serie": "8° ano",
+            "assunto": "Equações de 1º grau",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Resolvendo a equação 5x - 10 = 2x + 8, encontramos x igual a:",
+        "opcoes": [
+            {"letra": "A", "texto": "2"},
+            {"letra": "B", "texto": "3"},
+            {"letra": "C", "texto": "6"},
+            {"letra": "D", "texto": "10"}
+        ],
+        "resposta_correta": "C"
+    }
+]
