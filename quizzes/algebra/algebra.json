@@ -1,0 +1,19 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF08MA07",
+            "serie": "8° ano",
+            "assunto": "Equações",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Qual o valor de x na equação 2x + 5 = 15?",
+        "opcoes": [
+            {"letra": "A", "texto": "5"},
+            {"letra": "B", "texto": "7"},
+            {"letra": "C", "texto": "10"},
+            {"letra": "D", "texto": "20"}
+        ],
+        "resposta_correta": "A"
+    }
+]
