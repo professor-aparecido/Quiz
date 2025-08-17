@@ -193,4 +193,3 @@ document.addEventListener("DOMContentLoaded", () => {
         displayTopicsList();
     }
 });
-
