@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzes de Matemática</title>
-   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="quizzes-page">
@@ -19,7 +19,7 @@
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="quizzes.html?tema=numeros">Quizzes</a></li>
                     <li><a href="#">Videoaulas</a></li>
                     <li><a href="#">Materiais</a></li>
                     <li><a href="#">Contato</a></li>
@@ -37,17 +37,23 @@
     
     <section class="content-section">
         <div class="container">
-            <div class="quiz-box">
+            <div id="quiz-topics-list" class="topic-list" style="display: none;">
+                <h3>Selecione um tópico</h3>
+                <div id="topics-buttons-container" class="content-buttons">
+                </div>
+            </div>
+
+            <div id="quiz-container" class="quiz-box" style="display: none;">
                 <div class="quiz-header">
-                    <h3 id="quiz-title">Quiz de Números</h3>
+                    <h3 id="quiz-title"></h3>
                     <div id="question-header-info" class="question-info-grid">
-                        </div>
+                    </div>
                 </div>
                 
                 <div class="quiz-content">
                     <p id="question-text">Pergunta do quiz irá aparecer aqui.</p>
                     <div id="options-container" class="options-grid">
-                        </div>
+                    </div>
                 </div>
 
                 <div class="quiz-footer">
