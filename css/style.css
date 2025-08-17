@@ -151,6 +151,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    margin-top: 20px; /* Espaçamento entre o texto e os botões */
 }
 
 .unit-card {
@@ -197,7 +198,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    background-color: #fff; /* Fundo branco como solicitado */
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -249,6 +250,7 @@ body {
 .quizzes-page .hero-internal {
     background-color: #F4D03F;
     color: #2E86C1;
+    padding-bottom: 60px; /* Aumenta o espaço para os botões */
 }
 
 /* Estilos do Quiz */
@@ -368,11 +370,11 @@ body {
     margin-top: 20px;
 }
 
-/* NOVO ESTILO: Para os botões de unidade na página de quizzes */
+/* NOVO ESTILO: Para os botões de unidade no banner */
 .unit-card-quiz {
-    background-color: #F8F8F8;
-    border: 2px solid #D3EAF8;
+    background-color: #FFF;
     color: #2E86C1;
+    border: 2px solid #2E86C1;
     padding: 15px 25px;
     border-radius: 50px;
     text-decoration: none;
@@ -400,11 +402,7 @@ body {
 
 /* Responsividade para a grade de unidades em telas pequenas */
 @media (max-width: 768px) {
-    .units .container {
-        padding: 0;
-    }
-
-    .unit-grid {
+    .hero-internal .unit-grid {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
