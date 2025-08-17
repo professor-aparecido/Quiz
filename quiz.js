@@ -99,12 +99,33 @@ function displayQuestion() {
 
     const currentQuestion = questions[currentQuestionIndex];
     const { tema } = getQuizParams();
-    const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
+    let formattedTema;
+
+    // Lógica para formatar o nome da unidade com acentuação
+    switch(tema) {
+        case 'numeros':
+            formattedTema = 'Números';
+            break;
+        case 'algebra':
+            formattedTema = 'Álgebra';
+            break;
+        case 'geometria':
+            formattedTema = 'Geometria';
+            break;
+        case 'grandezas':
+            formattedTema = 'Grandezas e Medidas';
+            break;
+        case 'probabilidade':
+            formattedTema = 'Probabilidade e Estatística';
+            break;
+        default:
+            formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
+    }
 
     questionHeaderInfo.innerHTML = `
+        <p><strong>Unidade:</strong> ${formattedTema}</p>
         <p><strong>Questão:</strong> ${currentQuestion.cabecalho.numero}</p>
         <p><strong>Habilidade BNCC:</strong> ${currentQuestion.cabecalho.habilidade_bncc}</p>
-        <p><strong>Unidade:</strong> ${formattedTema}</p>
         <p><strong>Série:</strong> ${currentQuestion.cabecalho.serie}</p>
         <p><strong>Assunto:</strong> ${currentQuestion.cabecalho.assunto}</p>
         <p><strong>Instituição:</strong> ${currentQuestion.cabecalho.instituicao}</p>
