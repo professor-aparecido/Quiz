@@ -1,0 +1,36 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF02MA14",
+            "serie": "2° ano",
+            "assunto": "Formas Geométricas",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Qual das seguintes formas geométricas tem 4 lados iguais e 4 ângulos retos?",
+        "opcoes": [
+            {"letra": "A", "texto": "Triângulo"},
+            {"letra": "B", "texto": "Retângulo"},
+            {"letra": "C", "texto": "Círculo"},
+            {"letra": "D", "texto": "Quadrado"}
+        ],
+        "resposta_correta": "D"
+    },
+    {
+        "cabecalho": {
+            "numero": 2,
+            "habilidade_bncc": "EF05MA17",
+            "serie": "5° ano",
+            "assunto": "Formas Geométricas",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Um polígono que possui 5 lados é chamado de:",
+        "opcoes": [
+            {"letra": "A", "texto": "Pentágono"},
+            {"letra": "B", "texto": "Hexágono"},
+            {"letra": "C", "texto": "Heptágono"},
+            {"letra": "D", "texto": "Octógono"}
+        ],
+        "resposta_correta": "A"
+    }
+]
