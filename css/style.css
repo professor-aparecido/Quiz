@@ -232,56 +232,32 @@ body {
     margin-bottom: 0;
 }
 
-/* Estilo para a página de Números */
+/* Cor de fundo para cada unidade */
 .numeros-page .hero-internal {
     background-color: #D3EAF8;
     color: #2E86C1;
 }
 
-/* Estilo para a página de Álgebra */
 .algebra-page .hero-internal {
     background-color: #82E0AA;
     color: #2E86C1;
 }
 
-/* Estilo para a página de Geometria */
 .geometria-page .hero-internal {
     background-color: #A9CCE3;
     color: #2E86C1;
 }
 
-/* Estilo para a página de Grandezas e Medidas */
 .grandezas-page .hero-internal {
     background-color: #F7DC6F;
     color: #2E86C1;
 }
 
-/* Estilo para a página de Probabilidade e Estatística */
 .probabilidade-page .hero-internal {
     background-color: #E6B0AA;
     color: #2E86C1;
 }
 
-/* Responsividade para a grade de unidades em telas pequenas */
-@media (max-width: 768px) {
-    .units .container {
-        padding: 0;
-    }
-
-    .unit-grid {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        padding: 0 20px;
-    }
-
-    .unit-card {
-        flex: 0 0 150px;
-        margin-right: 15px;
-    }
-}
 /* Estilo para a página de Quizzes */
 .quizzes-page .hero-internal {
     background-color: #F4D03F;
@@ -303,6 +279,26 @@ body {
     font-size: 28px;
     margin-bottom: 20px;
     color: #2E86C1;
+}
+
+/* Estilos para o cabeçalho das questões do quiz */
+.question-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.question-info-grid p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    border-left: 2px solid #5DADE2;
+    padding-left: 8px;
 }
 
 .quiz-content #question-text {
@@ -332,6 +328,11 @@ body {
     transform: translateY(-2px);
 }
 
+.option-btn.selected {
+    border: 2px solid #5DADE2;
+    transform: translateY(-2px);
+}
+
 .option-btn.correct {
     background-color: #82E0AA;
     color: #fff;
@@ -350,6 +351,19 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+/* Estilos do botão Responder */
+#answer-btn {
+    background-color: #5DADE2;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
 }
 
 #next-btn {
@@ -372,35 +386,32 @@ body {
     font-weight: bold;
     margin-top: 20px;
 }
-/* Estilos para o cabeçalho das questões do quiz */
-.question-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
 
-.question-info-grid p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-    border-left: 2px solid #5DADE2;
-    padding-left: 8px;
-}
-
-/* Estilos do botão Responder */
-#answer-btn {
+/* Rodapé */
+.footer {
     background-color: #5DADE2;
     color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsividade para a grade de unidades em telas pequenas */
+@media (max-width: 768px) {
+    .units .container {
+        padding: 0;
+    }
+
+    .unit-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 0 20px;
+    }
+
+    .unit-card {
+        flex: 0 0 150px;
+        margin-right: 15px;
+    }
 }
