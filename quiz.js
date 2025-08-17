@@ -26,8 +26,8 @@ function getQuizParams() {
 // Função para exibir a lista de tópicos
 async function displayTopicsList() {
     const { tema } = getQuizParams();
-    const filePath = `quizzes/${tema}/${tema}-temas.json`; // Arquivo com a lista de tópicos
-
+    const filePath = `quizzes/${tema}/${tema}-temas.json`;
+    
     topicsListContainer.style.display = "block";
     quizContainer.style.display = "none";
     
@@ -45,7 +45,7 @@ async function displayTopicsList() {
             const button = document.createElement("a");
             button.href = `quizzes.html?tema=${tema}&topico=${topic.id}`;
             button.className = "btn";
-            button.textContent = `Quiz: ${topic.nome}`;
+            button.textContent = `${topic.nome}`; // Mudança aqui!
             topicsButtonsContainer.appendChild(button);
         });
 
