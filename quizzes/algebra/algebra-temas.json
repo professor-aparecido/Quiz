@@ -1,0 +1,14 @@
+[
+    {
+        "id": "equacoes",
+        "nome": "Equações de 1º Grau"
+    },
+    {
+        "id": "sistemas-de-equacoes",
+        "nome": "Sistemas de Equações"
+    },
+    {
+        "id": "polinomios",
+        "nome": "Polinômios"
+    }
+]
