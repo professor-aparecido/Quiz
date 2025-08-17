@@ -7,7 +7,7 @@
             "assunto": "Equações de 1º grau",
             "instituicao": "CAED"
         },
-        "pergunta": "Qual é o valor de x na equação 3x + 7 = 19?",
+        "pergunta": "Qual é o valor de x na equação $3x + 7 = 19$?",
         "opcoes": [
             {"letra": "A", "texto": "4"},
             {"letra": "B", "texto": "6"},
