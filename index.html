@@ -1,493 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Quiz do Professor Aparecido</title>
-<style>
-:root{
-  --azul:#1976d2;
-  --verde:#43a047;
-  --laranja:#f4511e;
-  --cinza:#f5f5f5;
-  --cinza2:#e0e0e0;
-  --cinza3:#f0f0f0;
-  --erro:#c62828;
-  --acerto:#2e7d32;
-  --badge:#1e88e5;
-}
-*{box-sizing:border-box}
-body{
-  font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  background:#f9f9f9;
-  margin:0;
-  color:#222;
-}
-
-/* ======= TOP BAR FIXA ======= */
-.topbar{
-  position:fixed; top:0; left:0; right:0;
-  background:linear-gradient(135deg,#1f3c88,#2e7ad3);
-  color:#fff; z-index:1000;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
-.topbar-inner{
-  max-width:1000px; margin:0 auto; padding:14px 16px;
-  display:flex; align-items:center; justify-content:center;
-}
-.topbar h1{ font-size:20px; margin:0; letter-spacing:.3px; }
-
-/* Espaço para o conteúdo não ficar embaixo da topbar */
-.main{ max-width:1000px; margin:0 auto; padding:92px 16px 24px; }
-
-/* ======= TELA INICIAL (grade 3x2) ======= */
-#telaInicial{
-  display:grid; gap:18px; justify-items:center;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-}
-@media (max-width: 820px){
-  #telaInicial{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 520px){
-  #telaInicial{ grid-template-columns: 1fr; }
-}
-
-.areaBtn{
-  width: 100%; max-width: 260px; height: 120px;
-  border:none; border-radius:16px; cursor:pointer; color:#fff;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  font-size:18px; line-height:1.2; text-align:center;
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-  box-shadow: 0 6px 14px rgba(0,0,0,.18);
-  background:linear-gradient(135deg,#6a11cb 0%, #2575fc 100%);
-}
-.areaBtn span{ display:block; font-size:28px; margin-bottom:6px; }
-.areaBtn:hover{ transform: translateY(-4px) scale(1.02); box-shadow:0 12px 24px rgba(0,0,0,.25); }
-.areaBtn:active{ transform: translateY(-1px) scale(.995); }
-
-/* Cores por área (overlay sutil para variar) */
-.areaBtn.algebra{ background:linear-gradient(135deg,#1976d2,#42a5f5); }
-.areaBtn.geometria{ background:linear-gradient(135deg,#2e7d32,#66bb6a); }
-.areaBtn.medidas{ background:linear-gradient(135deg,#f6a700,#ffd54f); color:#222; }
-.areaBtn.numeros{ background:linear-gradient(135deg,#f4511e,#ff8a65); }
-.areaBtn.prob{ background:linear-gradient(135deg,#8e24aa,#ba68c8); }
-.areaBtn.todas{ background:linear-gradient(135deg,#0f9b0f,#00b09b); }
-
-/* ======= QUIZ CARD ======= */
-.quiz-container{
-  background:#fff; border-radius:12px; padding:20px;
-  box-shadow:0 4px 16px rgba(0,0,0,.1); display:none;
-}
-
-/* Cabeçalhos da questão */
-.cabecalho-primeira{
-  background: var(--cinza2); padding:6px 10px; font-weight:600;
-  border-radius:8px 8px 0 0;
-}
-.cabecalho-segunda{
-  background: var(--cinza3); padding:6px 10px; font-style:italic;
-  border-radius:0 0 8px 8px;
-}
-.linha-separadora{ height:1px; background:#ccc; margin:12px 0; }
-
-/* Pergunta e imagem */
-#pergunta{ font-size:18px; margin:8px 0 6px;text-align:justify;}
-#imagemQuestao{ max-width:100%; border-radius:8px; margin:8px 0 2px; display:none; }
-
-/* Alternativas */
-#alternativas{ margin-top:8px; }
-.alternativa{
-  display:flex; align-items:center; gap:10px;
-  background:#f7f7f7; margin:10px 0; padding:12px 14px;
-  border-radius:50px; cursor:pointer;
-  transition: background .18s, transform .06s ease-in-out, border-color .18s;
-  border:1px solid #e6e6e6;
-}
-.alternativa:hover{ background:#efefef; }
-.alternativa:active{ transform:scale(0.995); }
-.alternativa.selecionada{ background:#fff3cd; border-color:#eed78a; }
-.alternativa .letra{
-  width:34px; height:34px; flex:0 0 34px;
-  display:inline-flex; align-items:center; justify-content:center;
-  border-radius:50%; color:#fff; font-weight:700; background: var(--badge);
-  box-shadow:0 2px 4px rgba(0,0,0,.15);
-}
-
-/* Barra de progresso */
-.progresso-wrap{
-  margin:8px 0 4px; background:#eee; border-radius:999px; overflow:hidden; height:10px;
-}
-.progresso{
-  height:100%; width:0%; background: linear-gradient(90deg,#42a5f5,#66bb6a);
-  transition: width .3s ease;
-}
-
-/* Botões */
-.botoes{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
-button{
-  padding:10px 16px; border:none; border-radius:10px; cursor:pointer; font-size:15px;
-}
-#confirmarBtn{ background: var(--verde); color:#fff; }
-#proximaBtn{ background: var(--azul); color:#fff; display:none; }
-#reiniciarBtn{ background: var(--laranja); color:#fff; display:none; }
-
-/* Mensagens */
-#mensagem{ margin-top:10px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.msg-acerto{ color: var(--acerto); }
-.msg-erro{ color: var(--erro); }
-#particles{ display:inline-block; }
-
-/* Rodapé leve (opcional) */
-.footer{
-  color:#666; text-align:center; font-size:12px; margin-top:18px;
-}
-</style>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
-<script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['\\[', '\\]'], ['$$', '$$']]
-      }
-    };
-</script>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Site de Matemática</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <h1>Quiz do Professor Aparecido</h1>
-  </div>
-</header>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Seu Site de Matemática</h1>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Quizzes</a></li>
+                    <li><a href="#">Videoaulas</a></li>
+                    <li><a href="#">Materiais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<main class="main">
+    <section class="hero">
+        <div class="container">
+            <h2>Matemática descomplicada para o Ensino Fundamental.</h2>
+            <p>Estude com videoaulas, pratique com quizzes interativos e domine cada habilidade da BNCC.</p>
+            <a href="#" class="cta-button">Começar a Aprender Agora</a>
+        </div>
+    </section>
 
-  <section id="telaInicial" aria-label="Escolha da área do quiz">
-    <button class="areaBtn algebra" onclick="iniciarQuiz('Álgebra')">
-      <span>🧮</span>Álgebra
-    </button>
-    <button class="areaBtn geometria" onclick="iniciarQuiz('Geometria')">
-      <span>📐</span>Geometria
-    </button>
-    <button class="areaBtn medidas" onclick="iniciarQuiz('Grandezas e Medidas')">
-      <span>📏</span>Grandezas e Medidas
-    </button>
-    <button class="areaBtn numeros" onclick="iniciarQuiz('Números e Operações')">
-      <span>🔢</span>Números e Operações
-    </button>
-    <button class="areaBtn prob" onclick="iniciarQuiz('Probabilidade e Estatística')">
-      <span>🎲</span>Probabilidade e Estatística
-    </button>
-    <button class="areaBtn todas" onclick="iniciarQuiz('Todas')">
-      <span>🌐</span>Todas as Áreas
-    </button>
-  </section>
+    <section class="search-bar">
+        <div class="container">
+            <input type="text" placeholder="Buscar por habilidade ou tema...">
+            <button type="submit">Buscar</button>
+        </div>
+    </section>
 
-  <section class="quiz-container" id="quizCard" aria-live="polite">
-    <div class="progresso-wrap" aria-hidden="true">
-      <div class="progresso" id="barraProgresso"></div>
-    </div>
+    <section class="features">
+        <div class="container">
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/100" alt="Ícone de Quiz">
+                <h3>Teste seu Conhecimento</h3>
+                <p>Pratique com quizzes por unidade temática e confira seu progresso na hora.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/100" alt="Ícone de Videoaula">
+                <h3>Aprenda com Videoaulas</h3>
+                <p>Aulas curtas e objetivas, com exemplos e explicações claras para cada conceito.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/100" alt="Ícone de Material">
+                <h3>Acesse Material de Apoio</h3>
+                <p>Baixe resumos, guias de estudo e exercícios para complementar suas aulas.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/100" alt="Ícone do Geogebra">
+                <h3>Acesse Applets e Jogos</h3>
+                <p>Explore os recursos criados com o Geogebra.</p>
+            </div>
+        </div>
+    </section>
 
-    <div id="cabecalho">
-      <div class="cabecalho-primeira" id="cabecalho1"></div>
-      <div class="cabecalho-segunda" id="cabecalho2"></div>
-    </div>
+    <section class="units">
+        <div class="container">
+            <h2>Encontre o que você precisa</h2>
+            <div class="unit-grid">
+                <a href="#" class="unit-card">Números</a>
+                <a href="#" class="unit-card">Álgebra</a>
+                <a href="#" class="unit-card">Geometria</a>
+                <a href="#" class="unit-card">Grandezas e Medidas</a>
+                <a href="#" class="unit-card">Probabilidade e Estatística</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="linha-separadora"></div>
-
-    <p id="pergunta"></p>
-    <img id="imagemQuestao" alt="Imagem da questão"/>
-
-    <div id="alternativas"></div>
-
-    <div id="mensagem"></div>
-
-    <div class="botoes">
-      <button id="confirmarBtn" onclick="confirmarResposta()">Confirmar</button>
-      <button id="proximaBtn" onclick="proximaQuestao()">Próxima</button>
-      <button id="reiniciarBtn" onclick="reiniciarQuiz()">Reiniciar</button>
-    </div>
-  </section>
-
-  <div class="footer">© 2025 • Quiz didático para estudos</div>
-</main>
-
-<script>
-/* =================== BANCO FICTÍCIO =================== */
-const bancoQuestoes = [
-  /* ÁLGEBRA */
-  {codigo:"ALG-001",disciplina:"Matemática",area:"Álgebra",ano:"2023",banca:"CAED",orgao:"AVALIAÇÃO CONTÍNUA DA APRENDIZAGEM NOS ANOS FINAIS – CICLO II",prova:"9º ano do Ensino Fundamental.",
-    pergunta:"Observe a equação polinomial apresentada no quadro abaixo. $$2x^2+4x - 30=0$$Qual é o conjunto solução dessa equação?",imagem:"",
-    alternativas:["$S = \\{–10, 6\\}$","$S = \\{–5, 3\\}$","$S = \\{2, 4\\}$","$S = \\{15, 26\\}$"],correta:1},
-  {codigo:"ALG-002",disciplina:"Matemática",area:"Álgebra",ano:"2022",banca:"Banca X",orgao:"Orgão Z",prova:"Prova B",
-    pergunta:"Simplifique a expressão: $2(x+3) - x$.",imagem:"",
-    alternativas:["$x + 3$","$2x + 3$","$x + 6$","$2x + 6$"],correta:2},
-  {codigo:"ALG-003",disciplina:"Matemática",area:"Álgebra",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"O valor de $a$ em $5a - 10 = 0$ é:",imagem:"",
-    alternativas:["$-2$","$0$","$2$","$10$"],correta:2},
-  {codigo:"ALG-004",disciplina:"Matemática",area:"Álgebra",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"Se $f(x)=2x+1$, então $f(4)$ é:",imagem:"",
-    alternativas:["$7$","$8$","$9$","$10$"],correta:2},
-
-  /* GEOMETRIA */
-  {codigo:"GEO-001",disciplina:"Matemática",area:"Geometria",ano:"2023",banca:"Banca X",orgao:"Orgão Y",prova:"Prova A",
-    pergunta:"A soma dos ângulos internos de um triângulo é:",imagem:"",
-    alternativas:["180°","90°","270°","360°"],correta:0},
-  {codigo:"GEO-002",disciplina:"Matemática",area:"Geometria",ano:"2022",banca:"Banca X",orgao:"Orgão Z",prova:"Prova B",
-    pergunta:"Qual é o perímetro de um quadrado de lado 5 cm?",imagem:"",
-    alternativas:["10 cm","15 cm","20 cm","25 cm"],correta:2},
-  {codigo:"GEO-003",disciplina:"Matemática",area:"Geometria",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"Identifique a figura:",imagem:"ima01",
-    alternativas:["Círculo","Triângulo equilátero","Retângulo","Trapézio"],correta:1},
-  {codigo:"GEO-004",disciplina:"Matemática",area:"Geometria",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"Um retângulo tem base 8 e altura 3. Sua área é:",imagem:"",
-    alternativas:["11","22","24","26"],correta:2},
-
-  /* GRANDEZAS E MEDIDAS */
-  {codigo:"GM-001",disciplina:"Matemática",area:"Grandezas e Medidas",ano:"2023",banca:"Banca X",orgao:"Orgão Y",prova:"Prova A",
-    pergunta:"Converta 500 mL para litros.",imagem:"",
-    alternativas:["0,05 L","0,5 L","5 L","50 L"],correta:1},
-  {codigo:"GM-002",disciplina:"Matemática",area:"Grandezas e Medidas",ano:"2022",banca:"Banca X",orgao:"Orgão Z",prova:"Prova B",
-    pergunta:"Quantos metros há em 3 km?",imagem:"",
-    alternativas:["300","3000","30","0,3"],correta:1},
-  {codigo:"GM-003",disciplina:"Matemática",area:"Grandezas e Medidas",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"1 hora e 30 minutos correspondem a quantos minutos?",imagem:"",
-    alternativas:["60","75","90","120"],correta:2},
-  {codigo:"GM-004",disciplina:"Matemática",area:"Grandezas e Medidas",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"Um recipiente comporta 2,5 L. Isso equivale a quantos mL?",imagem:"",
-    alternativas:["250 mL","2.500 mL","25 mL","250.000 mL"],correta:1},
-
-  /* NÚMEROS E OPERAÇÕES */
-  {codigo:"NO-001",disciplina:"Matemática",area:"Números e Operações",ano:"2025",banca:"VUNESP",orgao:"Pref. Itapevi/SP",prova:"Agente de Serviços - Fundamental",
-    pergunta:"Dos 180 mL de um produto químico industrial, 25% são solventes, e destes, 20% são álcool. O volume de álcool nesse produto corresponde, então, a",imagem:"",
-    alternativas:["9mL.","12mL.","18mL.","24mL."],correta:0},
-  {codigo:"NO-002",disciplina:"Matemática",area:"Números e Operações",ano:"2022",banca:"VUNESP",orgao:"Pref. Itatiba/SP",prova:"Almoxarife - Fundamental",
-    pergunta:"Durante uma campanha de conscientização ambiental, 50 pessoas fizeram contribuições para organizações não governamentais (ONG) atuantes na defesa do meio ambiente; 20 dessas pessoas doaram \\(R$ 1.500,00\\), e as demais, \\(R$ 1.800,00\\). O valor total foi então recolhido e repartido, em partes iguais, entre 3 ONG, cada uma das quais recebeu, portanto,",imagem:"",
-    alternativas:["R$ 24.000,00.","R$ 25.000,00.","R$ 26.000,00.","R$ 28.000,00."],correta:3},
-  {codigo:"NO-003",disciplina:"Matemática",area:"Números e Operações",ano:"2025",banca:"CAED",orgao:"AVALIAÇÃO CONTÍNUA DA APRENDIZAGEM NOS ANOS FINAIS – CICLO II",prova:"9º ano do Ensino Fundamental.",
-    pergunta:"O preço do ingresso de um parque de diversões custava 80 reais. O preço desse ingresso aumentou em 30% sobre o valor inicial. Qual foi o aumento, em reais, no preço do ingresso desse parque de diversões?",imagem:"",
-    alternativas:["240 reias.","104 reais","30 reais.","24 reais."],correta:3},
-  {codigo:"NO-004",disciplina:"Matemática",area:"Números e Operações",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"Qual é o resultado de 45 ÷ 5?",imagem:"",
-    alternativas:["5","7","8","9"],correta:3},
-
-  /* PROBABILIDADE E ESTATÍSTICA */
-  {codigo:"PE-001",disciplina:"Matemática",area:"Probabilidade e Estatística",ano:"2023",banca:"Banca X",orgao:"Orgão Y",prova:"Prova A",
-    pergunta:"A probabilidade de sair cara em uma moeda justa é:",imagem:"",
-    alternativas:["1/2","1/3","1/4","1/6"],correta:0},
-  {codigo:"PE-002",disciplina:"Matemática",area:"Probabilidade e Estatística",ano:"2022",banca:"Banca X",orgao:"Orgão Z",prova:"Prova B",
-    pergunta:"A média de 2, 4, 6, 8 é:",imagem:"",
-    alternativas:["4,5","5","5,5","6"],correta:1},
-  {codigo:"PE-003",disciplina:"Matemática",area:"Probabilidade e Estatística",ano:"2021",banca:"Banca Y",orgao:"Orgão T",prova:"Prova C",
-    pergunta:"Se um dado é lançado, a probabilidade de sair 1 é:",imagem:"",
-    alternativas:["1/2","1/3","1/6","1/12"],correta:2},
-  {codigo:"PE-004",disciplina:"Matemática",area:"Probabilidade e Estatística",ano:"2020",banca:"Banca Z",orgao:"Orgão R",prova:"Prova D",
-    pergunta:"A moda do conjunto {3, 5, 5, 6, 7} é:",imagem:"",
-    alternativas:["3","5","6","7"],correta:1},
-];
-
-/* =================== ESTADO =================== */
-const TOTAL_POR_TENTATIVA = 4;
-let questoesSelecionadas = [];
-let indiceQuestao = 0;
-let respostaSelecionada = null;
-let acertos = 0;
-
-/* =================== SOM =================== */
-let audioCtx=null;
-function ensureAudio(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==="suspended") audioCtx.resume();
-}
-function somAcerto(){
-  ensureAudio();
-  const t=audioCtx.currentTime;
-  const g=audioCtx.createGain();
-  g.gain.setValueAtTime(0.0001,t);
-  g.gain.exponentialRampToValueAtTime(0.18,t+0.02);
-  g.gain.exponentialRampToValueAtTime(0.0001,t+0.35);
-
-  const o1=audioCtx.createOscillator();
-  const o2=audioCtx.createOscillator();
-  o1.type="sine"; o2.type="sine";
-  o1.frequency.setValueAtTime(660,t);
-  o2.frequency.setValueAtTime(880,t+0.02);
-
-  o1.connect(g); o2.connect(g); g.connect(audioCtx.destination);
-  o1.start(t); o2.start(t+0.01);
-  o1.stop(t+0.36); o2.stop(t+0.36);
-}
-function somErro(){
-  ensureAudio();
-  const t=audioCtx.currentTime;
-  const g=audioCtx.createGain();
-  g.gain.setValueAtTime(0.0001,t);
-  g.gain.exponentialRampToValueAtTime(0.12,t+0.02);
-  g.gain.exponentialRampToValueAtTime(0.0001,t+0.35);
-
-  const o=audioCtx.createOscillator();
-  o.type="sine";
-  o.frequency.setValueAtTime(440,t);
-  o.frequency.exponentialRampToValueAtTime(320,t+0.25);
-
-  o.connect(g); g.connect(audioCtx.destination);
-  o.start(t); o.stop(t+0.35);
-}
-
-/* =================== FLUXO =================== */
-function iniciarQuiz(area){
-  acertos=0; indiceQuestao=0; respostaSelecionada=null;
-  const pool = (area==='Todas') ? bancoQuestoes.slice()
-                                 : bancoQuestoes.filter(q=>q.area===area);
-
-  // Embaralha e pega até TOTAL_POR_TENTATIVA
-  questoesSelecionadas = embaralhar(pool).slice(0, Math.min(TOTAL_POR_TENTATIVA, pool.length));
-
-  // Mostra o card do quiz
-  document.getElementById("telaInicial").style.display="none";
-  document.getElementById("quizCard").style.display="block";
-  document.getElementById("reiniciarBtn").style.display="none";
-  atualizarBarraProgresso();
-  mostrarQuestao();
-}
-
-function mostrarQuestao(){
-  const q = questoesSelecionadas[indiceQuestao];
-  // Cabeçalho
-  document.getElementById("cabecalho1").textContent =
-    `Código: ${q.codigo} | ${q.disciplina} | ${q.area}`;
-  document.getElementById("cabecalho2").textContent =
-    `Ano: ${q.ano} | Banca/Órgão: ${q.banca} | ${q.orgao} | Prova: ${q.prova}`;
-
-  // Enunciado e imagem
-  document.getElementById("pergunta").textContent = q.pergunta;
-  const img = document.getElementById("imagemQuestao");
-  if(q.imagem){ img.src=q.imagem; img.style.display="block"; }
-  else { img.style.display="none"; }
-
-  // Alternativas
-  const letras=["A","B","C","D"];
-  const altHtml = q.alternativas.map((alt,i)=>
-    `<div class="alternativa" onclick="selecionarAlternativa(${i})" role="button" tabindex="0">
-       <span class="letra">${letras[i]}</span> ${alt}
-     </div>`).join("");
-  document.getElementById("alternativas").innerHTML = altHtml;
-
-  // Mensagem/controle
-  document.getElementById("mensagem").innerHTML = "";
-  respostaSelecionada = null;
-  document.getElementById("confirmarBtn").style.display="inline-block";
-  document.getElementById("proximaBtn").style.display="none";
-  atualizarBarraProgresso();
-
-  // Processa o LaTeX após a questão ser carregada
-  if (window.MathJax) {
-    MathJax.typesetPromise();
-  }
-}
-
-function selecionarAlternativa(i){
-  document.querySelectorAll(".alternativa").forEach(el=>el.classList.remove("selecionada"));
-  const lista = document.querySelectorAll(".alternativa");
-  if(!lista[i]) return;
-  lista[i].classList.add("selecionada");
-  respostaSelecionada = i;
-}
-
-function confirmarResposta(){
-  if(respostaSelecionada===null){
-    alert("Selecione uma alternativa antes de confirmar.");
-    return;
-  }
-  const q = questoesSelecionadas[indiceQuestao];
-  const correta = q.correta;
-
-  if(respostaSelecionada===correta){
-    document.getElementById("mensagem").innerHTML =
-      `<span class="msg-acerto">✅  Muito bem! Você acertou.</span><span id="particles">🎉</span>`;
-    somAcerto();
-  } else {
-    const textoCorreto = q.alternativas[correta];
-    document.getElementById("mensagem").innerHTML =
-      `<span class="msg-erro">❌  Resposta incorreta! </span>`;
-    somErro();
-  }
-
-  // Botões
-  document.getElementById("confirmarBtn").style.display="none";
-  document.getElementById("proximaBtn").style.display="inline-block";
-}
-
-function proximaQuestao(){
-  indiceQuestao++;
-  if(indiceQuestao < questoesSelecionadas.length){
-    mostrarQuestao();
-  } else {
-    // Fim do teste
-    const total = questoesSelecionadas.length;
-    document.getElementById("pergunta").textContent =
-      `🎉 Teste finalizado! Você acertou ${acertos} de ${total} questões.`;
-    document.getElementById("imagemQuestao").style.display="none";
-    document.getElementById("alternativas").innerHTML = "";
-    document.getElementById("mensagem").innerHTML = "";
-    document.getElementById("confirmarBtn").style.display="none";
-    document.getElementById("proximaBtn").style.display="none";
-    document.getElementById("reiniciarBtn").style.display="inline-block";
-    atualizarBarraProgresso(100);
-  }
-}
-
-// Reinicia e volta para a tela inicial
-function reiniciarQuiz(){
-  document.getElementById("quizCard").style.display="none";
-  document.getElementById("telaInicial").style.display="grid";
-  acertos=0; indiceQuestao=0; respostaSelecionada=null;
-  atualizarBarraProgresso(0);
-}
-
-/* =================== UTIL =================== */
-function embaralhar(arr){
-  // Fisher–Yates
-  const a = arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
-  }
-  return a;
-}
-
-function atualizarBarraProgresso(forcarPct){
-  const el = document.getElementById("barraProgresso");
-  const total = Math.max(questoesSelecionadas.length, TOTAL_POR_TENTATIVA);
-  const pct = (typeof forcarPct === "number")
-    ? forcarPct
-    : (total ? Math.round((indiceQuestao/total)*100) : 0);
-  el.style.width = pct + "%";
-}
-
-// Conta acertos na confirmação para manter coerência
-document.getElementById("confirmarBtn")?.addEventListener("click", ()=>{
-  const q = questoesSelecionadas[indiceQuestao];
-  if(respostaSelecionada===q?.correta) acertos++;
-});
-
-/* Acessibilidade básica com teclado (Enter ativa alternativa focada) */
-document.addEventListener("keydown", (e)=>{
-  if(e.key==="Enter"){
-    const foco = document.activeElement;
-    if(foco && foco.classList.contains("alternativa")){
-      const idx = Array.from(document.querySelectorAll(".alternativa")).indexOf(foco);
-      if(idx>=0) selecionarAlternativa(idx);
-    }
-  }
-});
-</script>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
