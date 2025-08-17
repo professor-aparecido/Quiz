@@ -197,7 +197,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    background-color: #fff;
+    background-color: #fff; /* Fundo branco como solicitado */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -340,7 +340,35 @@ body {
     font-size: 18px;
 }
 
-/* Estilo para os cartões de unidade na página de quizzes */
+/* Estilos dos botões */
+.btn {
+    background-color: #5DADE2;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #4A96C9;
+    transform: translateY(-2px);
+}
+
+#next-btn.hidden {
+    display: none;
+}
+
+#score-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* NOVO ESTILO: Para os botões de unidade na página de quizzes */
 .unit-card-quiz {
     background-color: #F8F8F8;
     border: 2px solid #D3EAF8;
