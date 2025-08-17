@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seu Site de Matemática</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header class="header">
@@ -18,7 +19,7 @@
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Quizzes</a></li>
+                    <li><a href="quizzes.html?tema=numeros">Quizzes</a></li>
                     <li><a href="#">Videoaulas</a></li>
                     <li><a href="#">Materiais</a></li>
                     <li><a href="#">Contato</a></li>
@@ -27,55 +28,59 @@
         </div>
     </header>
 
-    <section class="hero">
+
+      <section class="hero">
         <div class="container">
-            <h2>Matemática descomplicada para o Ensino Fundamental.</h2>
-            <p>Estude com videoaulas, pratique com quizzes interativos e domine cada habilidade da BNCC.</p>
+            <h2>Aprendizado de Matemática de um jeito simples e divertido.</h2>
+            <p>Explore nossas unidades temáticas, videoaulas, quizzes e materiais de apoio.</p>
+            <a href="#unidades" class="btn">Comece a Aprender</a>
         </div>
     </section>
 
-    <section class="units" id="unidades">
+
+      <section class="units" id="unidades">
         <div class="container">
+            <h2>Unidades Temáticas</h2>
             <div class="unit-grid">
                 <a href="numeros.html" class="unit-card">Números</a>
                 <a href="algebra.html" class="unit-card">Álgebra</a>
                 <a href="geometria.html" class="unit-card">Geometria</a>
                 <a href="grandezas.html" class="unit-card">Grandezas e Medidas</a>
                 <a href="probabilidade.html" class="unit-card">Probabilidade e Estatística</a>
+                <a href="quizzes.html?tema=numeros" class="unit-card">Quizzes</a>
             </div>
         </div>
     </section>
+
 
     <section class="features">
         <div class="container">
             <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Quiz">
-                <h3>Teste seu Conhecimento</h3>
-                <p>Pratique com quizzes por unidade temática e confira seu progresso na hora.</p>
+                <img src="https://via.placeholder.com/80" alt="Recurso 1">
+                <h3>Aulas Interativas</h3>
+                <p>Conteúdo didático e claro para facilitar o aprendizado.</p>
             </div>
             <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Videoaula">
-                <h3>Aprenda com Videoaulas</h3>
-                <p>Aulas curtas e objetivas, com exemplos e explicações claras para cada conceito.</p>
+                <img src="https://via.placeholder.com/80" alt="Recurso 2">
+                <h3>Quizzes Divertidos</h3>
+                <p>Teste seus conhecimentos com desafios interativos e empolgantes.</p>
             </div>
             <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Material">
-                <h3>Acesse Material de Apoio</h3>
-                <p>Baixe resumos, guias de estudo e exercícios para complementar suas aulas.</p>
-            </div>
-            <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone do Geogebra">
-                <h3>Acesse Applets e Jogos</h3>
-                <p>Explore os recursos criados com o Geogebra.</p>
+                <img src="https://via.placeholder.com/80" alt="Recurso 3">
+                <h3>Materiais Exclusivos</h3>
+                <p>Acesse apostilas, resumos e exercícios para aprofundar seu estudo.</p>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+
+      <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+
 
 </body>
 </html>
