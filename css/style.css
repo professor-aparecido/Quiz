@@ -466,7 +466,7 @@ body {
 /* --- Opção 2: Vibrante e Dinâmico --- */
 /* ---------------------------------- */
 /* Remova os símbolos `/*` e `*/` para ativar esta opção */
-
+/* 
 .quiz-box {
     background-color: #fff;
     border-radius: 15px;
@@ -536,13 +536,13 @@ body {
     border-color: #2E86C1;
     background-color: #fff;
 }
-
+*/
 
 /* ----------------------------- */
 /* --- Opção 3: Clássico e Sóbrio --- */
 /* ----------------------------- */
 /* Remova os símbolos `/*` e `*/` para ativar esta opção */
-/*
+
 .quiz-box {
     background-color: #fcfcfc;
     border-radius: 8px;
@@ -607,4 +607,4 @@ body {
     border-color: #5DADE2;
     transform: none;
 }
-*/
+
