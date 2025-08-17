@@ -6,6 +6,9 @@ const optionsContainer = document.getElementById("options-container");
 const feedbackText = document.getElementById("feedback-text");
 const answerButton = document.getElementById("answer-btn");
 const scoreText = document.getElementById("score-text");
+const topicsListContainer = document.getElementById("quiz-topics-list");
+const topicsButtonsContainer = document.getElementById("topics-buttons-container");
+const quizContainer = document.getElementById("quiz-container");
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -20,16 +23,51 @@ function getQuizParams() {
     return { tema, topico };
 }
 
-// Função para carregar as questões do arquivo JSON
-async function loadQuestions() {
-    const { tema, topico } = getQuizParams();
+// Função para exibir a lista de tópicos
+async function displayTopicsList() {
+    const { tema } = getQuizParams();
+    const filePath = `quizzes/${tema}/${tema}-temas.json`; // Arquivo com a lista de tópicos
 
+    topicsListContainer.style.display = "block";
+    quizContainer.style.display = "none";
+    
+    quizTitleElement.textContent = `Quizzes de ${tema.charAt(0).toUpperCase() + tema.slice(1)}`;
+
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error("Erro ao carregar a lista de tópicos.");
+        }
+        const topics = await response.json();
+        
+        topicsButtonsContainer.innerHTML = "";
+        topics.forEach(topic => {
+            const button = document.createElement("a");
+            button.href = `quizzes.html?tema=${tema}&topico=${topic.id}`;
+            button.className = "btn";
+            button.textContent = `Quiz: ${topic.nome}`;
+            topicsButtonsContainer.appendChild(button);
+        });
+
+    } catch (error) {
+        console.error("Falha ao carregar a lista de tópicos:", error);
+        topicsButtonsContainer.innerHTML = `<p>Não foi possível carregar os tópicos para este tema.</p>`;
+    }
+}
+
+// Função para carregar as questões do arquivo JSON e exibir o quiz
+async function loadQuizByTopic() {
+    const { tema, topico } = getQuizParams();
+    
+    topicsListContainer.style.display = "none";
+    quizContainer.style.display = "block";
+    
     // Constrói o caminho do arquivo JSON dinamicamente
     const filePath = `quizzes/${tema}/${topico}.json`;
 
-    // Atualiza o título do quiz na página
+    // Atualiza o título do quiz
     const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
-    const formattedTopico = topico ? topico.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Geral';
+    const formattedTopico = topico.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     quizTitleElement.textContent = `Quiz de ${formattedTema} - ${formattedTopico}`;
 
     try {
@@ -49,8 +87,6 @@ async function loadQuestions() {
         questionTextElement.textContent = "Erro ao carregar o quiz. Verifique a URL ou o arquivo JSON.";
     }
 }
-
-// As funções abaixo (displayQuestion, selectOption, checkAnswer, nextQuestion, endQuiz) permanecem as mesmas.
 
 function displayQuestion() {
     isAnswered = false;
@@ -87,7 +123,6 @@ function displayQuestion() {
 
 function selectOption(selectedButton) {
     if (isAnswered) return;
-
     Array.from(optionsContainer.children).forEach(btn => {
         btn.classList.remove("selected");
     });
@@ -96,18 +131,14 @@ function selectOption(selectedButton) {
 
 function checkAnswer() {
     if (isAnswered) return;
-
     const selectedButton = document.querySelector(".option-btn.selected");
-
     if (!selectedButton) {
         feedbackText.textContent = "Por favor, selecione uma opção.";
         return;
     }
-
     isAnswered = true;
     const currentQuestion = questions[currentQuestionIndex];
     const selectedOptionLetter = selectedButton.textContent.split(')')[0];
-
     if (selectedOptionLetter === currentQuestion.resposta_correta) {
         score++;
         feedbackText.textContent = "Correto! 🎉";
@@ -115,13 +146,11 @@ function checkAnswer() {
     } else {
         feedbackText.textContent = "Incorreto. 😔";
         selectedButton.classList.add("incorrect");
-        
         const correctButton = Array.from(optionsContainer.children).find(btn => btn.textContent.startsWith(currentQuestion.resposta_correta));
         if (correctButton) {
             correctButton.classList.add("correct");
         }
     }
-
     answerButton.style.display = "none";
     const nextButton = document.createElement("button");
     nextButton.textContent = "Próxima Pergunta";
@@ -129,7 +158,6 @@ function checkAnswer() {
     nextButton.classList.add("btn");
     nextButton.addEventListener("click", nextQuestion);
     answerButton.parentNode.insertBefore(nextButton, answerButton.nextSibling);
-
     Array.from(optionsContainer.children).forEach(btn => {
         btn.disabled = true;
     });
@@ -156,4 +184,12 @@ function endQuiz() {
 
 answerButton.addEventListener("click", checkAnswer);
 
-document.addEventListener("DOMContentLoaded", loadQuestions);
+// Lógica principal de inicialização
+document.addEventListener("DOMContentLoaded", () => {
+    const { topico } = getQuizParams();
+    if (topico) {
+        loadQuizByTopic();
+    } else {
+        displayTopicsList();
+    }
+});
