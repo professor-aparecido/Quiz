@@ -1,0 +1,36 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF06MA06",
+            "serie": "6° ano",
+            "assunto": "Múltiplos e divisores",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Qual é o menor múltiplo comum (MMC) entre 8 e 12?",
+        "opcoes": [
+            {"letra": "A", "texto": "24"},
+            {"letra": "B", "texto": "36"},
+            {"letra": "C", "texto": "48"},
+            {"letra": "D", "texto": "96"}
+        ],
+        "resposta_correta": "A"
+    },
+    {
+        "cabecalho": {
+            "numero": 2,
+            "habilidade_bncc": "EF06MA06",
+            "serie": "6° ano",
+            "assunto": "Múltiplos e divisores",
+            "instituicao": "CAED"
+        },
+        "pergunta": "O número 42 é divisível por qual dos seguintes números?",
+        "opcoes": [
+            {"letra": "A", "texto": "5"},
+            {"letra": "B", "texto": "8"},
+            {"letra": "C", "texto": "7"},
+            {"letra": "D", "texto": "9"}
+        ],
+        "resposta_correta": "C"
+    }
+]
