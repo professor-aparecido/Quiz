@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #EBF5FB; /* Azul muito claro de fundo */
+    background-color: #EBF5FB;
     color: #4A4A4A;
 }
 
@@ -13,7 +13,7 @@ body {
     padding: 0 20px;
 }
 
-/* Cabeçalho */
+/* Cabeçalho Principal */
 .header {
     background-color: #fff;
     padding: 15px 0;
@@ -24,12 +24,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; 
+    gap: 15px; 
 }
 
 .logo {
     font-size: 24px;
-    color: #2E86C1; /* Azul-médio */
+    color: #2E86C1;
     margin: 0;
+    order: 1; 
+}
+
+.nav-menu {
+    order: 3;
+    flex-basis: auto;
+    text-align: right;
 }
 
 .nav-menu ul {
@@ -37,21 +46,53 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-.nav-menu li {
-    margin-left: 20px;
+    justify-content: flex-end; 
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .nav-menu a {
     text-decoration: none;
     color: #555;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
-/* Banner Principal (Hero) */
+.nav-menu a:hover {
+    color: #2E86C1;
+}
+
+.search-bar-header {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #fff; 
+    padding: 5px 15px;
+    order: 2; 
+    flex-grow: 1;
+    max-width: 400px;
+    justify-content: center;
+}
+
+.search-bar-header input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.search-bar-header .search-icon {
+    font-size: 18px;
+    color: #888;
+    margin-right: 5px;
+}
+
+/* Banner Principal (Home) */
 .hero {
-    background-color: #5DADE2; /* Azul-claro */
+    background-color: #5DADE2;
     color: #fff;
     text-align: center;
     padding: 100px 20px;
@@ -65,53 +106,6 @@ body {
 .hero p {
     font-size: 20px;
     margin-bottom: 30px;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: #2E86C1; /* Azul-médio */
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-    background-color: #21618C;
-}
-
-/* Barra de Busca */
-.search-bar {
-    background-color: #5DADE2; /* Azul-claro */
-    padding: 20px 0;
-    text-align: center;
-}
-
-.search-bar input {
-    width: 60%;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.search-bar button {
-    padding: 12px 20px;
-    border: none;
-    background-color: #fff;
-    color: #2E86C1;
-    border-radius: 5px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.search-bar button:hover {
-    background-color: #D3EAF8;
 }
 
 /* Seção de Destaques */
@@ -149,11 +143,7 @@ body {
 .units {
     padding: 60px 0;
     text-align: center;
-    background-color: #D3EAF8; /* Azul claro para fundo */
-}
-
-.units h2 {
-    margin-bottom: 40px;
+    background-color: #D3EAF8;
 }
 
 .unit-grid {
@@ -169,7 +159,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    color: #5DADE2; /* Azul do banner */
+    color: #5DADE2;
     font-weight: bold;
     font-size: 18px;
     transition: transform 0.3s;
@@ -184,10 +174,233 @@ body {
     transform: translateY(-5px);
 }
 
-/* Rodapé */
-.footer {
+/* Estilos para as páginas de unidade */
+.content-section {
+    padding: 40px 0;
+}
+
+.topic-list {
+    margin-bottom: 40px;
+}
+
+.topic-list h3 {
+    background-color: #A3D2F0;
+    color: #2E86C1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.content-buttons .btn {
+    background-color: #fff;
+    color: #2E86C1;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-buttons .btn:hover {
+    background-color: #D3EAF8;
+    transform: translateY(-2px);
+}
+
+/* Estilo para banners de páginas internas */
+.hero-internal {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-internal h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero-internal p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+/* Estilo para a página de Números */
+.numeros-page .hero-internal {
+    background-color: #D3EAF8;
+    color: #2E86C1;
+}
+
+/* Estilo para a página de Álgebra */
+.algebra-page .hero-internal {
+    background-color: #82E0AA;
+    color: #2E86C1;
+}
+
+/* Estilo para a página de Geometria */
+.geometria-page .hero-internal {
+    background-color: #A9CCE3;
+    color: #2E86C1;
+}
+
+/* Estilo para a página de Grandezas e Medidas */
+.grandezas-page .hero-internal {
+    background-color: #F7DC6F;
+    color: #2E86C1;
+}
+
+/* Estilo para a página de Probabilidade e Estatística */
+.probabilidade-page .hero-internal {
+    background-color: #E6B0AA;
+    color: #2E86C1;
+}
+
+/* Responsividade para a grade de unidades em telas pequenas */
+@media (max-width: 768px) {
+    .units .container {
+        padding: 0;
+    }
+
+    .unit-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 0 20px;
+    }
+
+    .unit-card {
+        flex: 0 0 150px;
+        margin-right: 15px;
+    }
+}
+/* Estilo para a página de Quizzes */
+.quizzes-page .hero-internal {
+    background-color: #F4D03F;
+    color: #2E86C1;
+}
+
+/* Estilos do Quiz */
+.quiz-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.quiz-header h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2E86C1;
+}
+
+.quiz-content #question-text {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.option-btn {
+    background-color: #D3EAF8;
+    color: #4A4A4A;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.option-btn:hover {
+    background-color: #A3D2F0;
+    transform: translateY(-2px);
+}
+
+.option-btn.correct {
+    background-color: #82E0AA;
+    color: #fff;
+}
+
+.option-btn.incorrect {
+    background-color: #E6B0AA;
+    color: #fff;
+}
+
+.quiz-footer {
+    margin-top: 30px;
+}
+
+#feedback-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#next-btn {
     background-color: #5DADE2;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#next-btn.hidden {
+    display: none;
+}
+
+#score-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+/* Estilos para o cabeçalho das questões do quiz */
+.question-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.question-info-grid p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    border-left: 2px solid #5DADE2;
+    padding-left: 8px;
+}
+
+/* Estilos do botão Responder */
+#answer-btn {
+    background-color: #5DADE2;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
 }
