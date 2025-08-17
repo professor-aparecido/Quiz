@@ -98,8 +98,11 @@ function displayQuestion() {
     }
 
     const currentQuestion = questions[currentQuestionIndex];
+    const { tema } = getQuizParams();
+    const formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
 
     questionHeaderInfo.innerHTML = `
+        <p><strong>Unidade:</strong> ${formattedTema}</p>
         <p><strong>Questão:</strong> ${currentQuestion.cabecalho.numero}</p>
         <p><strong>Habilidade BNCC:</strong> ${currentQuestion.cabecalho.habilidade_bncc}</p>
         <p><strong>Série:</strong> ${currentQuestion.cabecalho.serie}</p>
