@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes de Matemática</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="quizzes-page">
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Seu Site de Matemática</h1>
+            <div class="search-bar-header">
+                <span class="search-icon"><i class="fas fa-search"></i></span>
+                <input type="text" placeholder="Buscar por tema...">
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="#">Videoaulas</a></li>
+                    <li><a href="#">Materiais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-internal">
+        <div class="container">
+            <h2>Quizzes de Matemática</h2>
+            <p>Teste seus conhecimentos com nossos quizzes interativos!</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="container">
+            <div class="quiz-box">
+                <div class="quiz-header">
+                    <h3 id="quiz-title">Quiz de Números</h3>
+                    <div id="question-header-info" class="question-info-grid">
+                        </div>
+                </div>
+                
+                <div class="quiz-content">
+                    <p id="question-text">Pergunta do quiz irá aparecer aqui.</p>
+                    <div id="options-container" class="options-grid">
+                        </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <p id="feedback-text"></p>
+                    <button id="answer-btn" class="btn">Responder</button>
+                    <p id="score-text" class="hidden"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="quiz.js"></script>
+
+</body>
+</html>
