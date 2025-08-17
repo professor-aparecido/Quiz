@@ -197,7 +197,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    background-color: #fff; /* Fundo branco como solicitado */
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -340,35 +340,7 @@ body {
     font-size: 18px;
 }
 
-/* Estilos dos botões */
-.btn {
-    background-color: #5DADE2;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn:hover {
-    background-color: #4A96C9;
-    transform: translateY(-2px);
-}
-
-#next-btn.hidden {
-    display: none;
-}
-
-#score-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* NOVO ESTILO: Para os botões de unidade na página de quizzes */
+/* Estilo para os cartões de unidade na página de quizzes */
 .unit-card-quiz {
     background-color: #F8F8F8;
     border: 2px solid #D3EAF8;
@@ -418,7 +390,16 @@ body {
         margin-right: 15px;
     }
 }
+
+/* ======================================= */
+/* ====== OPÇÕES DE ESTILO PARA O QUIZ ====== */
+/* ======================================= */
+
+/* --------------------------------- */
 /* --- Opção 1: Minimalista e Elegante --- */
+/* --------------------------------- */
+/* Remova os símbolos `/*` e `*/` para ativar esta opção */
+/*
 .quiz-box {
     background-color: #ffffff;
     border-radius: 12px;
@@ -452,7 +433,7 @@ body {
     font-size: 15px;
     color: #666;
     font-weight: 400;
-    border-left: none; /* Remove a borda lateral */
+    border-left: none;
     padding-left: 0;
 }
 
@@ -479,3 +460,151 @@ body {
 .option-btn.selected {
     border: 2px solid #5DADE2;
 }
+*/
+
+/* ---------------------------------- */
+/* --- Opção 2: Vibrante e Dinâmico --- */
+/* ---------------------------------- */
+/* Remova os símbolos `/*` e `*/` para ativar esta opção */
+
+.quiz-box {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 35px;
+    max-width: 650px;
+    margin: 40px auto;
+}
+
+.quiz-header h3 {
+    font-size: 30px;
+    color: #4A96C9;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #F7DC6F, #D3EAF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.question-info-grid.tag-style {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.question-info-grid.tag-style p {
+    margin: 0;
+    font-size: 14px;
+    color: #4A4A4A;
+    background-color: #D3EAF8;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: none;
+    padding-left: 15px;
+    font-weight: 500;
+}
+
+.options-grid {
+    gap: 10px;
+}
+
+.option-btn {
+    background-color: #A9CCE3;
+    color: #2E86C1;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.option-btn:hover {
+    background-color: #2E86C1;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.option-btn.selected {
+    border-color: #2E86C1;
+    background-color: #fff;
+}
+
+
+/* ----------------------------- */
+/* --- Opção 3: Clássico e Sóbrio --- */
+/* ----------------------------- */
+/* Remova os símbolos `/*` e `*/` para ativar esta opção */
+/*
+.quiz-box {
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    max-width: 680px;
+    margin: 40px auto;
+}
+
+.quiz-header h3 {
+    font-family: 'Georgia', serif;
+    font-size: 34px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.question-info-grid.classic-style {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.question-info-grid.classic-style p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    border-left: none;
+    padding-left: 0;
+    line-height: 1.5;
+}
+
+.options-grid {
+    gap: 15px;
+}
+
+.option-btn {
+    background-color: #E8F0F7;
+    color: #2c3e50;
+    border: 1px solid #c2d4e3;
+    border-radius: 6px;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.option-btn:hover {
+    background-color: #d3eaf8;
+    border-color: #5DADE2;
+}
+
+.option-btn.selected {
+    background-color: #5DADE2;
+    color: #fff;
+    border-color: #5DADE2;
+    transform: none;
+}
+*/
