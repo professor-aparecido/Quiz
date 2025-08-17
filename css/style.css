@@ -199,23 +199,6 @@ body {
     flex-wrap: wrap;
 }
 
-.content-buttons .btn {
-    background-color: #fff;
-    color: #2E86C1;
-    padding: 15px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.content-buttons .btn:hover {
-    background-color: #D3EAF8;
-    transform: translateY(-2px);
-}
-
 /* Estilo para banners de páginas internas */
 .hero-internal {
     text-align: center;
@@ -353,8 +336,8 @@ body {
     font-size: 18px;
 }
 
-/* Estilos do botão Responder */
-#answer-btn {
+/* Estilos dos botões */
+.btn {
     background-color: #5DADE2;
     color: #fff;
     border: none;
@@ -362,19 +345,13 @@ body {
     padding: 12px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-#next-btn {
-    background-color: #5DADE2;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.btn:hover {
+    background-color: #4A96C9;
+    transform: translateY(-2px);
 }
 
 #next-btn.hidden {
@@ -385,6 +362,26 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* Estilo para os cartões de unidade na página de quizzes */
+.unit-card-quiz {
+    background-color: #A3D2F0;
+    color: #2E86C1;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.unit-card-quiz:hover {
+    background-color: #D3EAF8;
+    transform: translateY(-2px);
 }
 
 /* Rodapé */
@@ -410,7 +407,7 @@ body {
         padding: 0 20px;
     }
 
-    .unit-card {
+    .unit-card, .unit-card-quiz {
         flex: 0 0 150px;
         margin-right: 15px;
     }
