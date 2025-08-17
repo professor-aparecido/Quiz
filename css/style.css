@@ -197,6 +197,10 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    background-color: #fff; /* Fundo branco como solicitado */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Estilo para banners de páginas internas */
@@ -364,23 +368,25 @@ body {
     margin-top: 20px;
 }
 
-/* Estilo para os cartões de unidade na página de quizzes */
+/* NOVO ESTILO: Para os botões de unidade na página de quizzes */
 .unit-card-quiz {
-    background-color: #A3D2F0;
+    background-color: #F8F8F8;
+    border: 2px solid #D3EAF8;
     color: #2E86C1;
     padding: 15px 25px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     flex: 1 1 150px;
     text-align: center;
 }
 
 .unit-card-quiz:hover {
     background-color: #D3EAF8;
+    border-color: #5DADE2;
     transform: translateY(-2px);
 }
 
