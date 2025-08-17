@@ -1,0 +1,193 @@
+/* Estilos Globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EBF5FB; /* Azul muito claro de fundo */
+    color: #4A4A4A;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: #2E86C1; /* Azul-médio */
+    margin: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Banner Principal (Hero) */
+.hero {
+    background-color: #5DADE2; /* Azul-claro */
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #2E86C1; /* Azul-médio */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #21618C;
+}
+
+/* Barra de Busca */
+.search-bar {
+    background-color: #5DADE2; /* Azul-claro */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #fff;
+    color: #2E86C1;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #D3EAF8;
+}
+
+/* Seção de Destaques */
+.features {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.features .container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-card img {
+    max-width: 80px;
+    margin-bottom: 20px;
+}
+
+/* Seção de Unidades Temáticas */
+.units {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #D3EAF8; /* Azul claro para fundo */
+}
+
+.units h2 {
+    margin-bottom: 40px;
+}
+
+.unit-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.unit-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #5DADE2; /* Azul do banner */
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s;
+    flex: 1 1 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.unit-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Rodapé */
+.footer {
+    background-color: #5DADE2;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
