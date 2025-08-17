@@ -15,25 +15,26 @@ let score = 0;
 let isAnswered = false;
 
 // --- FUNÇÕES DE SOM ---
-// Função para som de ACERTO
-function somAcerto() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const t = audioCtx.currentTime;
-    const gainNode = audioCtx.createGain();
-    gainNode.gain.setValueAtTime(0.01, t);
-    gainNode.gain.exponentialRampToValueAtTime(0.1, t + 0.05);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
-    const osc = audioCtx.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(440, t);
-    osc.frequency.exponentialRampToValueAtTime(880, t + 0.2);
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    osc.start(t);
-    osc.stop(t + 0.3);
+
+// Função de som de ACERTO (a que você enviou)
+function somAcerto(){
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const t=audioCtx.currentTime;
+  const g=audioCtx.createGain();
+  g.gain.setValueAtTime(0.0001,t);
+  g.gain.exponentialRampToValueAtTime(0.18,t+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+0.35);
+  const o1=audioCtx.createOscillator();
+  const o2=audioCtx.createOscillator();
+  o1.type="sine"; o2.type="sine";
+  o1.frequency.setValueAtTime(660,t);
+  o2.frequency.setValueAtTime(880,t+0.02);
+  o1.connect(g); o2.connect(g); g.connect(audioCtx.destination);
+  o1.start(t); o2.start(t+0.01);
+  o1.stop(t+0.36); o2.stop(t+0.36);
 }
 
-// Função para som de ERRO
+// Função para som de ERRO (mantive a sugestão original, que tem um som diferente)
 function somErro() {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const t = audioCtx.currentTime;
@@ -49,6 +50,7 @@ function somErro() {
     osc.start(t);
     osc.stop(t + 0.2);
 }
+
 // --- FIM DAS FUNÇÕES DE SOM ---
 
 // Função para obter os parâmetros 'tema' e 'topico' da URL
