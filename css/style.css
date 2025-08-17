@@ -418,3 +418,64 @@ body {
         margin-right: 15px;
     }
 }
+/* --- Opção 1: Minimalista e Elegante --- */
+.quiz-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.quiz-header h3 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 300;
+}
+
+.question-info-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border-left: 4px solid #5DADE2;
+}
+
+.question-info-grid p {
+    margin: 0;
+    font-size: 15px;
+    color: #666;
+    font-weight: 400;
+    border-left: none; /* Remove a borda lateral */
+    padding-left: 0;
+}
+
+.options-grid {
+    gap: 12px;
+}
+
+.option-btn {
+    background-color: #eef5f9;
+    color: #4A4A4A;
+    border-radius: 8px;
+    padding: 18px 25px;
+    font-size: 16px;
+    box-shadow: none;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.option-btn:hover {
+    background-color: #dbe9f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.option-btn.selected {
+    border: 2px solid #5DADE2;
+}
