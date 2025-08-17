@@ -1,0 +1,36 @@
+[
+    {
+        "cabecalho": {
+            "numero": 1,
+            "habilidade_bncc": "EF08MA08",
+            "serie": "8° ano",
+            "assunto": "Sistemas de equações",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Dado o sistema de equações x + y = 7 e x - y = 3, qual o valor de x e y?",
+        "opcoes": [
+            {"letra": "A", "texto": "x=2, y=5"},
+            {"letra": "B", "texto": "x=5, y=2"},
+            {"letra": "C", "texto": "x=4, y=3"},
+            {"letra": "D", "texto": "x=3, y=4"}
+        ],
+        "resposta_correta": "B"
+    },
+    {
+        "cabecalho": {
+            "numero": 2,
+            "habilidade_bncc": "EF08MA08",
+            "serie": "8° ano",
+            "assunto": "Sistemas de equações",
+            "instituicao": "CAED"
+        },
+        "pergunta": "Um estacionamento tem carros e motos, totalizando 15 veículos e 40 rodas. Quantos carros e quantas motos há no estacionamento?",
+        "opcoes": [
+            {"letra": "A", "texto": "5 carros e 10 motos"},
+            {"letra": "B", "texto": "8 carros e 7 motos"},
+            {"letra": "C", "texto": "10 carros e 5 motos"},
+            {"letra": "D", "texto": "12 carros e 3 motos"}
+        ],
+        "resposta_correta": "A"
+    }
+]
