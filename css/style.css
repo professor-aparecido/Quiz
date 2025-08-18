@@ -434,3 +434,66 @@ body {
         margin: 10px 0;
     }
 }
+/* Estilos para o botão de menu (hambúrguer) */
+.menu-toggle {
+    display: none; /* Oculta o botão em telas grandes */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Regras de responsividade para telas pequenas */
+@media (max-width: 768px) {
+    /* Ajusta o layout do cabeçalho */
+    .header .container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Oculta a barra de pesquisa e o menu de navegação em telas pequenas */
+    .search-bar-header {
+        display: none;
+    }
+
+    .nav-menu {
+        display: none; /* Oculta o menu de navegação */
+        position: absolute;
+        top: 85px; /* Altura do cabeçalho, ajuste se necessário */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Mostra o botão de menu (hambúrguer) */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Estilos para o menu quando está aberto */
+    .nav-menu.nav-open {
+        display: block;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+    
+    .nav-menu li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+}
