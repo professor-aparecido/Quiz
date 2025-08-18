@@ -95,9 +95,9 @@ body {
 }
 
 /* =======================================
-   Estilos da Página Principal (Home)
+   Estilos das Seções Principais (Home e Internas)
    ======================================= */
-.hero-home { /* Seletor corrigido para corresponder ao seu HTML */
+.hero-home {
     background-color: #5DADE2;
     color: #fff;
     text-align: center;
@@ -114,7 +114,7 @@ body {
     margin-bottom: 30px;
 }
 
-.hero-units { /* Seletor adicionado para o container dos cartões */
+.hero-units {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -122,7 +122,7 @@ body {
     margin-top: 40px;
 }
 
-.unit-card { /* Estilo corrigido para os cartões da Home */
+.unit-card {
     background-color: #fff;
     padding: 25px;
     border-radius: 10px;
@@ -143,14 +143,37 @@ body {
     transform: translateY(-5px);
 }
 
-.feature-grid { /* Estilo para a grade de features */
+.hero-internal {
+    text-align: center;
+    padding: 40px 20px;
+    color: #2E86C1;
+}
+
+.numeros-page .hero-internal { background-color: #D3EAF8; }
+.quizzes-page .hero-internal { background-color: #F4D03F; }
+
+.hero-internal h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero-internal p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.content-section {
+    padding: 40px 0;
+}
+
+.feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     text-align: center;
 }
 
-.feature-card { /* Estilo para os cartões de feature */
+.feature-card {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -161,13 +184,6 @@ body {
     font-size: 50px;
     color: #007bff;
     margin-bottom: 15px;
-}
-
-/* =======================================
-   Estilos das Páginas Internas
-   ======================================= */
-.content-section {
-    padding: 40px 0;
 }
 
 .topic-list {
@@ -193,28 +209,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
-
-.hero-internal {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.hero-internal h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-internal p {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-
-.numeros-page .hero-internal { background-color: #D3EAF8; color: #2E86C1; }
-.algebra-page .hero-internal { background-color: #82E0AA; color: #2E86C1; }
-.geometria-page .hero-internal { background-color: #A9CCE3; color: #2E86C1; }
-.grandezas-page .hero-internal { background-color: #F7DC6F; color: #2E86C1; }
-.probabilidade-page .hero-internal { background-color: #E6B0AA; color: #2E86C1; }
-.quizzes-page .hero-internal { background-color: #F4D03F; color: #2E86C1; }
 
 /* =======================================
    Estilos do Quiz e Gabarito
@@ -320,7 +314,7 @@ body {
     margin-top: 20px;
 }
 
-.unit-card-quiz { /* Estilo para os cartões de unidade na página de quizzes */
+.unit-card-quiz {
     background-color: #F8F8F8;
     border: 2px solid #D3EAF8;
     color: #2E86C1;
