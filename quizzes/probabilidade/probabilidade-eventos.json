@@ -1,0 +1,19 @@
+[
+  {
+    "pergunta": "Qual a probabilidade de um dado comum e justo, com seis faces, cair no número $4$?",
+    "opcoes": [
+      { "letra": "A", "texto": "1/2" },
+      { "letra": "B", "texto": "1/3" },
+      { "letra": "C", "texto": "1/4" },
+      { "letra": "D", "texto": "1/6" }
+    ],
+    "resposta_correta": "D",
+    "cabecalho": {
+      "numero": "1",
+      "habilidade_bncc": "EF06MA21",
+      "serie": "6º ano",
+      "assunto": "Probabilidade",
+      "instituicao": "Fictícia"
+    }
+  }
+]
