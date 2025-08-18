@@ -15,6 +15,9 @@ let score = 0;
 let isAnswered = false;
 let userAnswers = []; // Novo array para armazenar as respostas do usuário
 
+// Lista de todos os temas disponíveis
+const temasDisponiveis = ['numeros', 'algebra', 'geometria', 'grandezas', 'probabilidade'];
+
 // --- FUNÇÕES DE SOM ---
 
 // Função de som de ACERTO (a que você enviou)
@@ -79,6 +82,15 @@ async function displayTopicsList() {
         }
         const topics = await response.json();
         topicsButtonsContainer.innerHTML = "";
+        
+        // Adiciona o botão de Quiz Completo da Unidade
+        const quizCompletoBtn = document.createElement("a");
+        quizCompletoBtn.href = `quizzes.html?tema=${tema}&topico=todos`;
+        quizCompletoBtn.className = "btn";
+        quizCompletoBtn.textContent = "Quiz Completo da Unidade";
+        topicsButtonsContainer.appendChild(quizCompletoBtn);
+
+        // Adiciona os botões dos tópicos específicos
         topics.forEach(topic => {
             const button = document.createElement("a");
             button.href = `quizzes.html?tema=${tema}&topico=${topic.id}`;
@@ -92,26 +104,67 @@ async function displayTopicsList() {
     }
 }
 
-// Função para carregar as questões do arquivo JSON e exibir o quiz
-async function loadQuizByTopic() {
+// Lógica para carregar todos os quizzes de uma unidade ou de todo o site
+async function loadQuizzes() {
     const { tema, topico } = getQuizParams();
+    let allQuestions = [];
     topicsListContainer.style.display = "none";
     quizContainer.style.display = "block";
-    const filePath = `quizzes/${tema}/${topico}.json`;
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) {
-            throw new Error(`Erro ao carregar o quiz de ${tema}/${topico}: ${response.statusText}`);
+
+    const fetchAndConcat = async (temaAtual, topicoAtual) => {
+        const filePath = `quizzes/${temaAtual}/${topicoAtual}.json`;
+        try {
+            const response = await fetch(filePath);
+            if (response.ok) {
+                const quizData = await response.json();
+                allQuestions = allQuestions.concat(quizData);
+            }
+        } catch (error) {
+            console.error(`Erro ao carregar o quiz de ${temaAtual}/${topicoAtual}:`, error);
         }
-        questions = await response.json();
-        if (questions.length > 0) {
-            displayQuestion();
-        } else {
-            questionTextElement.textContent = "Nenhuma questão encontrada para este tópico.";
+    };
+
+    if (tema === 'geral') {
+        for (const temaGeral of temasDisponiveis) {
+            const temasFilePath = `quizzes/${temaGeral}/${temaGeral}-temas.json`;
+            try {
+                const temasResponse = await fetch(temasFilePath);
+                if (temasResponse.ok) {
+                    const temas = await temasResponse.json();
+                    for (const t of temas) {
+                        await fetchAndConcat(temaGeral, t.id);
+                    }
+                }
+            } catch (error) {
+                console.error(`Erro ao carregar a lista de tópicos do tema ${temaGeral}:`, error);
+            }
         }
-    } catch (error) {
-        console.error("Falha ao carregar as questões:", error);
-        questionTextElement.textContent = "Erro ao carregar o quiz. Verifique a URL ou o arquivo JSON.";
+    } else if (topico === 'todos') {
+        const temasFilePath = `quizzes/${tema}/${tema}-temas.json`;
+        try {
+            const temasResponse = await fetch(temasFilePath);
+            if (temasResponse.ok) {
+                const temas = await temasResponse.json();
+                for (const t of temas) {
+                    await fetchAndConcat(tema, t.id);
+                }
+            }
+        } catch (error) {
+            console.error(`Erro ao carregar a lista de tópicos do tema ${tema}:`, error);
+        }
+    } else {
+        await fetchAndConcat(tema, topico);
+    }
+    
+    questions = allQuestions;
+    if (questions.length > 0) {
+        // Embaralha as perguntas para quizzes completos ou gerais
+        if (questions.length > 1) {
+            questions = questions.sort(() => Math.random() - 0.5);
+        }
+        displayQuestion();
+    } else {
+        questionTextElement.textContent = "Nenhuma questão encontrada para este(s) tópico(s).";
     }
 }
 
@@ -143,6 +196,9 @@ function displayQuestion() {
             break;
         case 'probabilidade':
             formattedTema = 'Probabilidade e Estatística';
+            break;
+        case 'geral':
+            formattedTema = 'Geral';
             break;
         default:
             formattedTema = tema.charAt(0).toUpperCase() + tema.slice(1);
@@ -282,10 +338,14 @@ answerButton.addEventListener("click", checkAnswer);
 
 // Lógica principal de inicialização
 document.addEventListener("DOMContentLoaded", () => {
-    const { topico } = getQuizParams();
-    if (topico) {
-        loadQuizByTopic();
-    } else {
+    const { tema, topico } = getQuizParams();
+    
+    if (tema === 'geral' || topico === 'todos' || (tema && topico)) {
+        loadQuizzes();
+    } else if (tema) {
         displayTopicsList();
+    } else {
+        // Se a URL não tiver parâmetros, redireciona para a página principal.
+        window.location.href = "index.html"; 
     }
 });
