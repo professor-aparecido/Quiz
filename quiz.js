@@ -31,7 +31,7 @@ function somAcerto(){
   o1.frequency.setValueAtTime(660,t);
   o2.frequency.setValueAtTime(880,t+0.02);
   o1.connect(g); o2.connect(g); g.connect(audioCtx.destination);
-  o1.start(t); o2.start(t+0.01);
+  o1.start(t); o2.start(t+0.36);
   o1.stop(t+0.36); o2.stop(t+0.36);
 }
 
@@ -156,7 +156,7 @@ function displayQuestion() {
         <p><strong>Instituição:</strong> ${currentQuestion.cabecalho.instituicao}</p>
     `;
     
-    // AQUI: Usando innerHTML para permitir que o MathJax renderize equações
+    // Usando innerHTML para permitir que o MathJax renderize equações
     questionTextElement.innerHTML = currentQuestion.pergunta;
     
     currentQuestion.opcoes.forEach(option => {
@@ -166,6 +166,12 @@ function displayQuestion() {
         button.addEventListener("click", () => selectOption(button));
         optionsContainer.appendChild(button);
     });
+
+    // AQUI: CHAMA A FUNÇÃO PARA RENDERIZAR O MATHJAX NOVAMENTE
+    // O setTimeout de 0ms garante que o DOM seja atualizado antes de tentar renderizar.
+    setTimeout(() => {
+        MathJax.typesetPromise();
+    }, 0);
 }
 
 function selectOption(selectedButton) {
@@ -230,7 +236,7 @@ function nextQuestion() {
 
 function endQuiz() {
     questionHeaderInfo.innerHTML = "";
-    questionTextElement.textContent = "Quiz finalizado!";
+    questionTextElement.innerHTML = "Quiz finalizado!"; // use innerHTML aqui também para o texto final
     optionsContainer.innerHTML = "";
     answerButton.style.display = "none";
     feedbackText.textContent = "";
@@ -243,13 +249,14 @@ function endQuiz() {
     gabaritoHTML.innerHTML = "<h3>Gabarito Completo</h3>";
     
     userAnswers.forEach((item, index) => {
-        const itemGabarito = document.createElement("p");
+        const itemGabarito = document.createElement("div");
         let status = item.acertou ? '✅ Correto' : '❌ Incorreto';
         let suaResposta = item.acertou ? '' : ` (Sua resposta: ${item.suaResposta})`;
         itemGabarito.innerHTML = `
-            <strong>${index + 1}.</strong> ${status} ${suaResposta}<br>
-            <strong>Pergunta:</strong> ${item.pergunta}<br>
-            <strong>Resposta Correta:</strong> ${item.respostaCorreta}
+            <p><strong>${index + 1}.</strong> ${status} ${suaResposta}</p>
+            <p><strong>Pergunta:</strong> ${item.pergunta}</p>
+            <p><strong>Resposta Correta:</strong> ${item.respostaCorreta}</p>
+            <hr>
         `;
         gabaritoHTML.appendChild(itemGabarito);
     });
@@ -264,6 +271,11 @@ function endQuiz() {
     restartButton.style.marginTop = "20px";
     restartButton.addEventListener("click", () => window.location.reload());
     quizBox.appendChild(restartButton);
+
+    // Chame a renderização do MathJax para o gabarito
+    setTimeout(() => {
+        MathJax.typesetPromise();
+    }, 0);
 }
 
 answerButton.addEventListener("click", checkAnswer);
