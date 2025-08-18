@@ -1,44 +1,81 @@
-/* Estilos Globais */
+/* Estilos Gerais */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #EBF5FB;
-    color: #4A4A4A;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Cabeçalho Principal */
+.btn {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Header */
 .header {
-    background-color: #fff;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 0;
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; 
-    gap: 15px; 
+    flex-wrap: wrap;
 }
 
 .logo {
     font-size: 24px;
-    color: #2E86C1;
+    color: #333;
     margin: 0;
-    order: 1; 
 }
 
-.nav-menu {
-    order: 3;
-    flex-basis: auto;
-    text-align: right;
+.search-bar-header {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background-color: #f9f9f9;
+}
+
+.search-bar-header .search-icon {
+    margin-right: 8px;
+    color: #555;
+}
+
+.search-bar-header input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    width: 200px;
 }
 
 .nav-menu ul {
@@ -46,167 +83,96 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end; 
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
-.nav-menu a {
-    text-decoration: none;
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
     color: #555;
+    text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.nav-menu a:hover {
-    color: #2E86C1;
+.nav-menu ul li a:hover {
+    color: #007bff;
 }
 
-.search-bar-header {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background-color: #fff; 
-    padding: 5px 15px;
-    order: 2; 
-    flex-grow: 1;
-    max-width: 400px;
-    justify-content: center;
-}
-
-.search-bar-header input {
-    border: none;
-    background: transparent;
-    outline: none;
-    padding: 5px;
-    font-size: 14px;
-    width: 100%;
-}
-
-.search-bar-header .search-icon {
-    font-size: 18px;
-    color: #888;
-    margin-right: 5px;
-}
-
-/* Banner Principal (Home) */
-.hero {
-    background-color: #5DADE2;
+/* Hero Section */
+.hero-home {
+    background: url('https://via.placeholder.com/1500x500/f0f8ff/333333?text=Seu+Banner+Aqui') no-repeat center center/cover;
     color: #fff;
     text-align: center;
-    padding: 100px 20px;
+    padding: 80px 0;
+    position: relative;
 }
 
-.hero h2 {
+.hero-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-home h1, .hero-home p, .hero-home .hero-units {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-home h1 {
     font-size: 48px;
     margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
-/* Seção de Destaques */
-.features {
-    padding: 60px 0;
-    text-align: center;
-}
-
-.features .container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.feature-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1 1 200px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.feature-card img {
-    max-width: 80px;
-    margin-bottom: 20px;
-}
-
-/* Seção de Unidades Temáticas */
-.units {
-    padding: 60px 0;
-    text-align: center;
-    background-color: #D3EAF8;
-}
-
-.unit-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.unit-card {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: #5DADE2;
-    font-weight: bold;
+.hero-home p {
     font-size: 18px;
-    transition: transform 0.3s;
-    flex: 1 1 150px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.unit-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Estilos para as páginas de unidade */
-.content-section {
-    padding: 40px 0;
-}
-
-.topic-list {
     margin-bottom: 40px;
 }
 
-.topic-list h3 {
-    background-color: #A3D2F0;
-    color: #2E86C1;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.content-buttons {
+.hero-units {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
 }
 
-/* Estilo para banners de páginas internas */
-.hero-internal {
+.unit-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 40px 20px;
+    padding: 20px;
+    width: 180px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.unit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.unit-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Hero interno (para as páginas de unidade e quizzes) */
+.hero-internal {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 60px 0;
 }
 
 .hero-internal h2 {
@@ -216,201 +182,233 @@ body {
 
 .hero-internal p {
     font-size: 18px;
-    margin-bottom: 0;
+    margin: 0;
 }
 
-/* Cor de fundo para cada unidade */
-.numeros-page .hero-internal {
-    background-color: #D3EAF8;
-    color: #2E86C1;
+/* Seção de Conteúdo (para tópicos, features, etc) */
+.content-section {
+    padding: 60px 0;
 }
 
-.algebra-page .hero-internal {
-    background-color: #82E0AA;
-    color: #2E86C1;
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
 }
 
-.geometria-page .hero-internal {
-    background-color: #A9CCE3;
-    color: #2E86C1;
+.feature-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.grandezas-page .hero-internal {
-    background-color: #F7DC6F;
-    color: #2E86C1;
+.feature-card i {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 15px;
 }
 
-.probabilidade-page .hero-internal {
-    background-color: #E6B0AA;
-    color: #2E86C1;
+/* Lista de tópicos (páginas de quiz) */
+.topic-list {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Estilo para a página de Quizzes */
-.quizzes-page .hero-internal {
-    background-color: #F4D03F;
-    color: #2E86C1;
+.topic-list h3 {
+    font-size: 24px;
+    margin-top: 0;
 }
 
-/* Estilos do Quiz */
-.quiz-box {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 35px;
-    max-width: 650px;
-    margin: 40px auto;
-}
-
-/* Modificação para o cabeçalho da questão no estilo de tags */
-.question-info-grid.tag-style {
+.content-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
-    background-color: transparent;
-    border: none;
-    padding: 0;
+    gap: 15px;
 }
 
-.question-info-grid.tag-style p {
-    margin: 0;
+.content-buttons .btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.content-buttons .btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Quiz Box */
+.quiz-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.question-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.tag-style p {
+    background: #e9ecef;
+    border-radius: 5px;
+    padding: 5px 10px;
     font-size: 14px;
-    color: #4A4A4A;
-    background-color: #D3EAF8;
-    padding: 8px 15px;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: none;
-    padding-left: 15px;
-    font-weight: 500;
+    margin: 0;
 }
 
-/* Estilos para as alternativas do quiz */
+.quiz-content #question-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
 .options-grid {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 15px;
 }
 
 .option-btn {
-    background-color: #D3EAF8;
-    color: #2E86C1;
-    border: none;
-    border-radius: 50px;
-    padding: 15px 25px;
-    font-size: 16px;
-    cursor: pointer;
+    width: 100%;
     text-align: left;
-    transition: background-color 0.3s, transform 0.3s;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
 }
 
 .option-btn:hover {
-    background-color: #A3D2F0;
-    transform: translateY(-2px);
+    background: #e9ecef;
 }
 
 .option-btn.selected {
-    background-color: #fff;
-    border: 2px solid #2E86C1;
-    transform: translateY(-2px);
+    border-color: #007bff;
+    background: #e2f0ff;
 }
 
 .option-btn.correct {
-    background-color: #82E0AA;
+    background-color: #28a745;
     color: #fff;
-    border: none;
+    border-color: #28a745;
 }
 
 .option-btn.incorrect {
-    background-color: #E6B0AA;
+    background-color: #dc3545;
     color: #fff;
-    border: none;
+    border-color: #dc3545;
 }
 
-/* Estilos dos botões padrão (Responder, etc.) */
-.btn {
-    background-color: #5DADE2;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn:hover {
-    background-color: #4A96C9;
-    transform: translateY(-2px);
-}
-
-#next-btn.hidden {
-    display: none;
-}
-
-#score-text {
-    font-size: 24px;
-    font-weight: bold;
+.quiz-footer {
     margin-top: 20px;
+    text-align: center;
 }
 
-/* Estilo para os cartões de unidade na página de quizzes */
+#feedback-text {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Seção de Unidades (Rodapé) */
+.units {
+    background: #343a40;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.units h2 {
+    margin-bottom: 30px;
+}
+
+.unit-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
 .unit-card-quiz {
-    background-color: #F8F8F8;
-    border: 2px solid #D3EAF8;
-    color: #2E86C1;
-    padding: 15px 25px;
-    border-radius: 50px;
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    flex: 1 1 150px;
+    font-size: 18px;
+    width: 220px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    
+    /* Regras para centralizar o texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .unit-card-quiz:hover {
-    background-color: #D3EAF8;
-    border-color: #5DADE2;
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    background-color: #e9ecef;
 }
 
 /* Rodapé */
 .footer {
-    background-color: #5DADE2;
+    background: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
 }
 
-/* Responsividade para a grade de unidades em telas pequenas */
-@media (max-width: 768px) {
-    .units .container {
-        padding: 0;
-    }
-
-    .unit-grid {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        padding: 0 20px;
-    }
-
-    .unit-card, .unit-card-quiz {
-        flex: 0 0 150px;
-        margin-right: 15px;
-    }
+/* GABARITO FINAL */
+.gabarito-final {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
 }
-.unit-card-quiz {
-    /* ... (outras regras de estilo que você já tem) ... */
-    display: flex; /* Transforma o card em um container flex */
-    flex-direction: column; /* Organiza o conteúdo em uma coluna (de cima para baixo) */
-    justify-content: center; /* Alinha o conteúdo verticalmente no centro */
-    align-items: center; /* Alinha o conteúdo horizontalmente no centro */
-    text-align: center; /* Garante que o texto em si também esteja centralizado */
+
+.gabarito-final h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Responsividade */
+@media(max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .search-bar-header {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul li {
+        margin: 10px 0;
+    }
 }
