@@ -406,3 +406,11 @@ body {
         margin-right: 15px;
     }
 }
+.unit-card-quiz {
+    /* ... (outras regras de estilo que você já tem) ... */
+    display: flex; /* Transforma o card em um container flex */
+    flex-direction: column; /* Organiza o conteúdo em uma coluna (de cima para baixo) */
+    justify-content: center; /* Alinha o conteúdo verticalmente no centro */
+    align-items: center; /* Alinha o conteúdo horizontalmente no centro */
+    text-align: center; /* Garante que o texto em si também esteja centralizado */
+}
