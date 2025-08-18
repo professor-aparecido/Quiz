@@ -1,4 +1,6 @@
-/* Estilos Globais */
+/* =======================================
+   Estilos Globais
+   ======================================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -13,7 +15,9 @@ body {
     padding: 0 20px;
 }
 
-/* Cabeçalho Principal */
+/* =======================================
+   Cabeçalho e Navegação
+   ======================================= */
 .header {
     background-color: #fff;
     padding: 15px 0;
@@ -90,7 +94,9 @@ body {
     margin-right: 5px;
 }
 
-/* Banner Principal (Home) */
+/* =======================================
+   Estilos da Página Principal (Home)
+   ======================================= */
 .hero {
     background-color: #5DADE2;
     color: #fff;
@@ -108,7 +114,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Seção de Destaques */
 .features {
     padding: 60px 0;
     text-align: center;
@@ -139,7 +144,9 @@ body {
     margin-bottom: 20px;
 }
 
-/* Seção de Unidades Temáticas */
+/* =======================================
+   Estilos das Páginas de Unidade
+   ======================================= */
 .units {
     padding: 60px 0;
     text-align: center;
@@ -174,7 +181,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Estilos para as páginas de unidade */
 .content-section {
     padding: 40px 0;
 }
@@ -203,55 +209,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para banners de páginas internas */
-.hero-internal {
-    text-align: center;
-    padding: 40px 20px;
-}
+/* Estilos de Cores para as Páginas */
+.numeros-page .hero-internal { background-color: #D3EAF8; color: #2E86C1; }
+.algebra-page .hero-internal { background-color: #82E0AA; color: #2E86C1; }
+.geometria-page .hero-internal { background-color: #A9CCE3; color: #2E86C1; }
+.grandezas-page .hero-internal { background-color: #F7DC6F; color: #2E86C1; }
+.probabilidade-page .hero-internal { background-color: #E6B0AA; color: #2E86C1; }
+.quizzes-page .hero-internal { background-color: #F4D03F; color: #2E86C1; }
+.hero-internal { text-align: center; padding: 40px 20px; }
+.hero-internal h2 { font-size: 36px; margin-bottom: 10px; }
+.hero-internal p { font-size: 18px; margin: 0; }
 
-.hero-internal h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-internal p {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-
-/* Cor de fundo para cada unidade */
-.numeros-page .hero-internal {
-    background-color: #D3EAF8;
-    color: #2E86C1;
-}
-
-.algebra-page .hero-internal {
-    background-color: #82E0AA;
-    color: #2E86C1;
-}
-
-.geometria-page .hero-internal {
-    background-color: #A9CCE3;
-    color: #2E86C1;
-}
-
-.grandezas-page .hero-internal {
-    background-color: #F7DC6F;
-    color: #2E86C1;
-}
-
-.probabilidade-page .hero-internal {
-    background-color: #E6B0AA;
-    color: #2E86C1;
-}
-
-/* Estilo para a página de Quizzes */
-.quizzes-page .hero-internal {
-    background-color: #F4D03F;
-    color: #2E86C1;
-}
-
-/* Estilos do Quiz */
+/* =======================================
+   Estilos do Quiz
+   ======================================= */
 .quiz-box {
     background-color: #fff;
     border-radius: 15px;
@@ -261,7 +232,6 @@ body {
     margin: 40px auto;
 }
 
-/* Modificação para o cabeçalho da questão no estilo de tags */
 .question-info-grid.tag-style {
     display: flex;
     justify-content: center;
@@ -286,7 +256,6 @@ body {
     font-weight: 500;
 }
 
-/* Estilos para as alternativas do quiz */
 .options-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -310,7 +279,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Regras de estilo para os estados do botão de opção do quiz */
 .option-btn.selected {
     background-color: #fff;
     border: 2px solid #2E86C1;
@@ -329,7 +297,6 @@ body {
     border: none;
 }
 
-/* Estilos dos botões padrão (Responder, etc.) */
 .btn {
     background-color: #5DADE2;
     color: #fff;
@@ -357,7 +324,6 @@ body {
     margin-top: 20px;
 }
 
-/* Estilo para os cartões de unidade na página de quizzes */
 .unit-card-quiz {
     background-color: #F8F8F8;
     border: 2px solid #D3EAF8;
@@ -383,15 +349,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Rodapé */
-.footer {
-    background-color: #5DADE2;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-/* Estilo para o Gabarito Final */
+/* Gabarito Final */
 .gabarito-final {
     background: #f8f8f8;
     border: 1px solid #ddd;
@@ -417,7 +375,19 @@ body {
     margin: 15px 0;
 }
 
-/* Responsividade */
+/* =======================================
+   Rodapé
+   ======================================= */
+.footer {
+    background-color: #5DADE2;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* =======================================
+   Responsividade
+   ======================================= */
 @media (max-width: 768px) {
     .units .container {
         padding: 0;
