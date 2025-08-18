@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidade de Geometria</title>
+    <title>Geometria</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -24,13 +24,13 @@
         <div class="container">
             <h1 class="logo">Seu Site de Matemática</h1>
             <div class="search-bar-header">
-                <span class="search-icon">&#x1F50D;</span>
+                <span class="search-icon"><i class="fas fa-search"></i></span>
                 <input type="text" placeholder="Buscar por tema...">
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="quizzes.html?tema=numeros">Quizzes</a></li>
+                    <li><a href="quizzes.html?tema=geral">Quizzes</a></li>
                     <li><a href="#">Videoaulas</a></li>
                     <li><a href="#">Materiais</a></li>
                     <li><a href="#">Contato</a></li>
@@ -41,22 +41,39 @@
 
     <section class="hero-internal">
         <div class="container">
-            <h2>Unidade de Geometria</h2>
-            <p>Descubra as formas, áreas, perímetros e os teoremas fundamentais da geometria.</p>
+            <h2>Geometria</h2>
+            <p>Descubra as formas, posições e relações espaciais!</p>
         </div>
     </section>
 
     <section class="content-section">
         <div class="container">
             <div class="topic-list">
-                <h3>Tópicos da Unidade</h3>
+                <h3>Recursos da Unidade</h3>
                 <div class="content-buttons">
-                    <a href="quizzes.html?tema=geometria" class="btn">Quiz da Unidade</a>
+                    <a href="#" class="btn">Teoria</a>
+                    <a href="quizzes.html?tema=geometria&topico=todos" class="btn">Quiz Completo</a>
+                    <a href="quizzes.html?tema=geometria" class="btn">Quizzes por Tópico</a>
+                    <a href="#" class="btn">Videoaulas</a>
+                    <a href="#" class="btn">Aplicativos</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="units" id="unidades">
+        <div class="container">
+            <h2>Escolha uma Unidade</h2>
+            <div class="unit-grid">
+                <a href="numeros.html" class="unit-card-quiz">Números</a>
+                <a href="algebra.html" class="unit-card-quiz">Álgebra</a>
+                <a href="geometria.html" class="unit-card-quiz">Geometria</a>
+                <a href="grandezas.html" class="unit-card-quiz">Grandezas e Medidas</a>
+                <a href="probabilidade.html" class="unit-card-quiz">Probabilidade e Estatística</a>
+            </div>
+        </div>
+    </section>
+    
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
