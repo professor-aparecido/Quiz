@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidade Temática: Grandezas e Medidas</title>
+    <title>Grandezas e Medidas</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['\\[', '\\]'], ['$$', '$$']]
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 </head>
 <body class="grandezas-page">
 
@@ -12,13 +24,13 @@
         <div class="container">
             <h1 class="logo">Seu Site de Matemática</h1>
             <div class="search-bar-header">
-                <span class="search-icon">&#x1F50D;</span>
+                <span class="search-icon"><i class="fas fa-search"></i></span>
                 <input type="text" placeholder="Buscar por tema...">
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <a href="quizzes.html?tema=grandezas" class="btn">Quizzes</a>
+                    <li><a href="quizzes.html?tema=numeros">Quizzes</a></li>
                     <li><a href="#">Videoaulas</a></li>
                     <li><a href="#">Materiais</a></li>
                     <li><a href="#">Contato</a></li>
@@ -29,70 +41,38 @@
 
     <section class="hero-internal">
         <div class="container">
-            <h2>Grandezas e Medidas: Entendendo o mundo em números</h2>
-            <p>Bem-vindo à unidade de Grandezas e Medidas! Aqui, vamos aprender a quantificar e comparar o mundo ao nosso redor. Você vai entender como o comprimento, a massa e o volume são medidos, e como usar as unidades corretas para cada situação, de forma prática e fácil.</p>
+            <h2>Grandezas e Medidas</h2>
+            <p>Aprenda sobre comprimento, tempo, massa, área e volume.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="topic-list">
+                <h3>Recursos da Unidade</h3>
+                <div class="content-buttons">
+                    <a href="#" class="btn">Teoria</a>
+                    <a href="quizzes.html?tema=grandezas" class="btn">Quizzes</a>
+                    <a href="#" class="btn">Videoaulas</a>
+                    <a href="#" class="btn">Aplicativos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="units" id="unidades">
+        <div class="container">
+            <h2>Escolha uma Unidade</h2>
+            <div class="unit-grid">
+                <a href="numeros.html" class="unit-card-quiz">Números</a>
+                <a href="algebra.html" class="unit-card-quiz">Álgebra</a>
+                <a href="geometria.html" class="unit-card-quiz">Geometria</a>
+                <a href="grandezas.html" class="unit-card-quiz">Grandezas e Medidas</a>
+                <a href="probabilidade.html" class="unit-card-quiz">Probabilidade e Estatística</a>
+            </div>
         </div>
     </section>
     
-    <section class="units" id="unidades">
-        <div class="container">
-            <div class="unit-grid">
-                <a href="numeros.html" class="unit-card">Números</a>
-                <a href="algebra.html" class="unit-card">Álgebra</a>
-                <a href="geometria.html" class="unit-card">Geometria</a>
-                <a href="grandezas.html" class="unit-card">Grandezas e Medidas</a>
-                <a href="probabilidade.html" class="unit-card">Probabilidade e Estatística</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section" id="topicos">
-        <div class="container">
-            <h2>Tópicos da Unidade</h2>
-
-            <div class="topic-list">
-                <h3>Medidas de Comprimento e Massa</h3>
-                <div class="content-buttons">
-                    <a href="#" class="btn">Videoaulas</a>
-                    <a href="#" class="btn">Quizzes</a>
-                    <a href="#" class="btn">Material Teórico</a>
-                    <a href="#" class="btn">Aplicativos</a>
-                </div>
-            </div>
-            
-            <div class="topic-list">
-                <h3>Medidas de Capacidade e Volume</h3>
-                <div class="content-buttons">
-                    <a href="#" class="btn">Videoaulas</a>
-                    <a href="#" class="btn">Quizzes</a>
-                    <a href="#" class="btn">Material Teórico</a>
-                    <a href="#" class="btn">Aplicativos</a>
-                </div>
-            </div>
-            
-            <div class="topic-list">
-                <h3>Medidas de Tempo</h3>
-                <div class="content-buttons">
-                    <a href="#" class="btn">Videoaulas</a>
-                    <a href="#" class="btn">Quizzes</a>
-                    <a href="#" class="btn">Material Teórico</a>
-                    <a href="#" class="btn">Aplicativos</a>
-                </div>
-            </div>
-
-            <div class="topic-list">
-                <h3>Escalas e Proporção</h3>
-                <div class="content-buttons">
-                    <a href="#" class="btn">Videoaulas</a>
-                    <a href="#" class="btn">Quizzes</a>
-                    <a href="#" class="btn">Material Teórico</a>
-                    <a href="#" class="btn">Aplicativos</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
