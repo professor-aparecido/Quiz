@@ -24,7 +24,7 @@
             "assunto": "Equações de 1º grau",
             "instituicao": "CAED"
         },
-        "pergunta": "Resolvendo a equação 5x - 10 = 2x + 8, encontramos x igual a:",
+        "pergunta": "Resolvendo a equação $5x - 10 = 2x + 8$, encontramos $x$ igual a:",
         "opcoes": [
             {"letra": "A", "texto": "2"},
             {"letra": "B", "texto": "3"},
