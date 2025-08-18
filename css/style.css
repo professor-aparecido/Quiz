@@ -445,8 +445,15 @@ body {
 }
 
 /* Regras de responsividade para telas pequenas */
+/* =======================================
+   Responsividade
+   ======================================= */
 @media (max-width: 768px) {
-    /* Ajusta o layout do cabeçalho */
+    /* Ajusta o padding para telas pequenas */
+    body {
+        padding-top: 150px;
+    }
+    
     .header .container {
         flex-direction: row;
         flex-wrap: nowrap;
@@ -454,29 +461,34 @@ body {
         align-items: center;
     }
 
-    /* Oculta a barra de pesquisa e o menu de navegação em telas pequenas */
+    .logo {
+        order: 1; /* Garante que o logo seja o primeiro elemento (esquerda) */
+        text-align: left;
+    }
+    
     .search-bar-header {
-        display: none;
+        display: none; /* Oculta a barra de busca em telas pequenas */
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2; /* Garante que o botão seja o segundo elemento (direita) */
     }
 
     .nav-menu {
-        display: none; /* Oculta o menu de navegação */
         position: absolute;
-        top: 85px; /* Altura do cabeçalho, ajuste se necessário */
+        top: 60px; /* Ajuste a altura para ficar abaixo do cabeçalho */
         left: 0;
         width: 100%;
         background-color: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        display: none; /* Oculta o menu por padrão */
+        order: 4;
+        z-index: 1000;
     }
-    
-    /* Mostra o botão de menu (hambúrguer) */
-    .menu-toggle {
-        display: block;
-    }
-    
-    /* Estilos para o menu quando está aberto */
+
     .nav-menu.nav-open {
-        display: block;
+        display: block; /* Mostra o menu quando a classe nav-open é adicionada */
     }
 
     .nav-menu ul {
@@ -484,8 +496,8 @@ body {
         align-items: center;
         padding: 20px 0;
     }
-    
-    .nav-menu li {
+
+    .nav-menu ul li {
         margin: 10px 0;
         width: 100%;
         text-align: center;
@@ -495,5 +507,23 @@ body {
         display: block;
         padding: 10px;
         border-bottom: 1px solid #eee;
+    }
+
+    .units .container {
+        padding: 0;
+    }
+
+    .unit-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 0 20px;
+    }
+
+    .unit-card, .unit-card-quiz {
+        flex: 0 0 150px;
+        margin-right: 15px;
     }
 }
