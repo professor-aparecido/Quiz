@@ -5,6 +5,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    padding-top: 85px; /* Adiciona um espaço para o cabeçalho fixo */
     background-color: #EBF5FB;
     color: #4A4A4A;
 }
@@ -22,6 +23,11 @@ body {
     background-color: #fff;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: fixed; /* Fixa o cabeçalho no topo da página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o cabeçalho fique por cima de outros elementos */
 }
 
 .header .container {
@@ -94,6 +100,15 @@ body {
     margin-right: 5px;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
 /* =======================================
    Estilos das Seções Principais (Home e Internas)
    ======================================= */
@@ -104,12 +119,12 @@ body {
     padding: 100px 20px;
 }
 
-.hero-home h1 {
+.hero-home h1, .hero-internal h2 {
     font-size: 48px;
     margin-bottom: 20px;
 }
 
-.hero-home p {
+.hero-home p, .hero-internal p {
     font-size: 20px;
     margin-bottom: 30px;
 }
@@ -152,21 +167,11 @@ body {
 .numeros-page .hero-internal { background-color: #D3EAF8; }
 .quizzes-page .hero-internal { background-color: #F4D03F; }
 
-.hero-internal h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-internal p {
-    font-size: 18px;
-    margin-bottom: 0;
-}
-
 .content-section {
     padding: 40px 0;
 }
 
-.feature-grid {
+.feature-grid, .content-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
@@ -186,10 +191,6 @@ body {
     margin-bottom: 15px;
 }
 
-.topic-list {
-    margin-bottom: 40px;
-}
-
 .topic-list h3 {
     background-color: #A3D2F0;
     color: #2E86C1;
@@ -197,94 +198,6 @@ body {
     border-radius: 8px;
     text-align: center;
     margin-bottom: 20px;
-}
-
-.content-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-/* =======================================
-   Estilos do Quiz e Gabarito
-   ======================================= */
-.quiz-box {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 35px;
-    max-width: 650px;
-    margin: 40px auto;
-}
-
-.question-info-grid.tag-style {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-}
-
-.question-info-grid.tag-style p {
-    margin: 0;
-    font-size: 14px;
-    color: #4A4A4A;
-    background-color: #D3EAF8;
-    padding: 8px 15px;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: none;
-    padding-left: 15px;
-    font-weight: 500;
-}
-
-.options-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-
-.option-btn {
-    background-color: #D3EAF8;
-    color: #2E86C1;
-    border: none;
-    border-radius: 50px;
-    padding: 15px 25px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.option-btn:hover {
-    background-color: #A3D2F0;
-    transform: translateY(-2px);
-}
-
-.option-btn.selected {
-    background-color: #fff;
-    border: 2px solid #2E86C1;
-    transform: translateY(-2px);
-}
-
-.option-btn.correct {
-    background-color: #82E0AA;
-    color: #fff;
-    border: none;
-}
-
-.option-btn.incorrect {
-    background-color: #E6B0AA;
-    color: #fff;
-    border: none;
 }
 
 .btn {
@@ -302,16 +215,6 @@ body {
 .btn:hover {
     background-color: #4A96C9;
     transform: translateY(-2px);
-}
-
-#next-btn.hidden {
-    display: none;
-}
-
-#score-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
 }
 
 .unit-card-quiz {
@@ -337,31 +240,6 @@ body {
     background-color: #D3EAF8;
     border-color: #5DADE2;
     transform: translateY(-2px);
-}
-
-.gabarito-final {
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.gabarito-final h3 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #2E86C1;
-    border-bottom: 2px solid #D3EAF8;
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.gabarito-final hr {
-    border: 0;
-    border-top: 1px dashed #ccc;
-    margin: 15px 0;
 }
 
 /* =======================================
@@ -391,6 +269,69 @@ body {
    Responsividade
    ======================================= */
 @media (max-width: 768px) {
+    body {
+        padding-top: 150px; /* Aumenta o padding para acomodar o cabeçalho móvel */
+    }
+
+    .header .container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        order: 1;
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    .search-bar-header {
+        display: none;
+        order: 2;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 60px; /* Ajuste a altura para ficar abaixo do cabeçalho */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        display: none; /* Oculta o menu por padrão */
+        order: 4;
+        z-index: 1000;
+    }
+
+    .nav-menu.nav-open {
+        display: block; /* Mostra o menu quando a classe nav-open é adicionada */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .nav-menu ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
     .units .container {
         padding: 0;
     }
@@ -407,25 +348,5 @@ body {
     .unit-card, .unit-card-quiz {
         flex: 0 0 150px;
         margin-right: 15px;
-    }
-
-    .header .container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .search-bar-header {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-menu ul li {
-        margin: 10px 0;
     }
 }
