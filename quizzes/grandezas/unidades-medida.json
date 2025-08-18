@@ -1,0 +1,19 @@
+[
+  {
+    "pergunta": "Quantos centímetros há em $1$ metro?",
+    "opcoes": [
+      { "letra": "A", "texto": "10 cm" },
+      { "letra": "B", "texto": "100 cm" },
+      { "letra": "C", "texto": "1.000 cm" },
+      { "letra": "D", "texto": "10.000 cm" }
+    ],
+    "resposta_correta": "B",
+    "cabecalho": {
+      "numero": "1",
+      "habilidade_bncc": "EF05MA19",
+      "serie": "5º ano",
+      "assunto": "Grandezas e Medidas",
+      "instituicao": "Fictícia"
+    }
+  }
+]
