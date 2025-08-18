@@ -3,34 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de Matemática</title>
+    <title>Seu Site de Matemática</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['\\[', '\\]'], ['$$', '$$']]
-        }
-      };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
 </head>
-<body>
+<body class="home-page">
 
     <header class="header">
         <div class="container">
             <h1 class="logo">Seu Site de Matemática</h1>
             <div class="search-bar-header">
-                <span class="search-icon">&#x1F50D;</span>
+                <span class="search-icon"><i class="fas fa-search"></i></span>
                 <input type="text" placeholder="Buscar por tema...">
             </div>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                     <li><a href="quizzes.html?tema=numeros">Quizzes</a></li>
+                    <li><a href="quizzes.html?tema=geral">Quizzes</a></li>
                     <li><a href="#">Videoaulas</a></li>
                     <li><a href="#">Materiais</a></li>
                     <li><a href="#">Contato</a></li>
@@ -39,50 +28,71 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero-home">
         <div class="container">
-            <h2>Matemática descomplicada para o Ensino Fundamental.</h2>
-            <p>Estude com videoaulas, pratique com quizzes interativos e domine cada habilidade da BNCC.</p>
+            <h1>Domine a Matemática de uma forma divertida!</h1>
+            <p>Aprenda, pratique e teste seus conhecimentos com quizzes interativos, vídeoaulas e materiais de estudo para todas as unidades da matemática.</p>
+            <div class="hero-units">
+                <a href="numeros.html" class="unit-card">
+                    <img src="https://via.placeholder.com/150/007bff/FFFFFF?text=Numeros" alt="Unidade Números">
+                    <h3>Números</h3>
+                </a>
+                <a href="algebra.html" class="unit-card">
+                    <img src="https://via.placeholder.com/150/28a745/FFFFFF?text=Algebra" alt="Unidade Álgebra">
+                    <h3>Álgebra</h3>
+                </a>
+                <a href="geometria.html" class="unit-card">
+                    <img src="https://via.placeholder.com/150/ffc107/FFFFFF?text=Geometria" alt="Unidade Geometria">
+                    <h3>Geometria</h3>
+                </a>
+                <a href="grandezas.html" class="unit-card">
+                    <img src="https://via.placeholder.com/150/dc3545/FFFFFF?text=Grandezas" alt="Unidade Grandezas e Medidas">
+                    <h3>Grandezas e Medidas</h3>
+                </a>
+                <a href="probabilidade.html" class="unit-card">
+                    <img src="https://via.placeholder.com/150/6c757d/FFFFFF?text=Probabilidade" alt="Unidade Probabilidade e Estatística">
+                    <h3>Probabilidade e Estatística</h3>
+                </a>
+            </div>
         </div>
     </section>
 
+    <section class="content-section">
+        <div class="container">
+            <h2>Por que aprender com a gente?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Quizzes Interativos</h3>
+                    <p>Teste seus conhecimentos com questões desafiadoras e feedback imediato.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Materiais de Estudo</h3>
+                    <p>Acesse resumos e guias para aprofundar seu aprendizado.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Videoaulas</h3>
+                    <p>Explicações claras e dinâmicas para fixar o conteúdo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="units" id="unidades">
         <div class="container">
+            <h2>Escolha uma Unidade</h2>
             <div class="unit-grid">
-                <a href="numeros.html" class="unit-card">Números</a>
-                <a href="algebra.html" class="unit-card">Álgebra</a>
-                <a href="geometria.html" class="unit-card">Geometria</a>
-                <a href="grandezas.html" class="unit-card">Grandezas e Medidas</a>
-                <a href="probabilidade.html" class="unit-card">Probabilidade e Estatística</a>
+                <a href="numeros.html" class="unit-card-quiz">Números</a>
+                <a href="algebra.html" class="unit-card-quiz">Álgebra</a>
+                <a href="geometria.html" class="unit-card-quiz">Geometria</a>
+                <a href="grandezas.html" class="unit-card-quiz">Grandezas e Medidas</a>
+                <a href="probabilidade.html" class="unit-card-quiz">Probabilidade e Estatística</a>
             </div>
         </div>
     </section>
-
-    <section class="features">
-        <div class="container">
-            <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Quiz">
-                <h3>Teste seu Conhecimento</h3>
-                <p>Pratique com quizzes por unidade temática e confira seu progresso na hora.</p>
-            </div>
-            <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Videoaula">
-                <h3>Aprenda com Videoaulas</h3>
-                <p>Aulas curtas e objetivas, com exemplos e explicações claras para cada conceito.</p>
-            </div>
-            <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone de Material">
-                <h3>Acesse Material de Apoio</h3>
-                <p>Baixe resumos, guias de estudo e exercícios para complementar suas aulas.</p>
-            </div>
-            <div class="feature-card">
-                <img src="https://via.placeholder.com/100" alt="Ícone do Geogebra">
-                <h3>Acesse Applets e Jogos</h3>
-                <p>Explore os recursos criados com o Geogebra.</p>
-            </div>
-        </div>
-    </section>
-
+    
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Seu Site de Matemática. Todos os direitos reservados.</p>
