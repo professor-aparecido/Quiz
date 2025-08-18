@@ -371,7 +371,6 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     flex: 1 1 150px;
     text-align: center;
-    /* Novas regras para centralizar texto e conteúdo */
     display: flex;
     flex-direction: column;
     justify-content: center;
