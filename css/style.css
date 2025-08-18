@@ -414,3 +414,62 @@ body {
     align-items: center; /* Alinha o conteúdo horizontalmente no centro */
     text-align: center; /* Garante que o texto em si também esteja centralizado */
 }
+/* --- Novas Regras de Estilo para Melhorias no Quiz --- */
+
+/* Alinhamento de cards no rodapé */
+.unit-card-quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilo do gabarito final */
+.gabarito-final {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.gabarito-final h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Novo estilo para botões de opção selecionados, corretos e incorretos */
+.option-btn.selected {
+    border-color: #007bff;
+    background: #e2f0ff;
+}
+
+.option-btn.correct {
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
+}
+
+.option-btn.incorrect {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+
+/* Estilo para o novo botão de 'Próxima Pergunta' */
+#next-btn {
+    margin-top: 15px;
+}
+
+/* Estilo do novo botão 'Quiz Completo da Unidade' */
+.content-buttons .btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.content-buttons .btn:hover {
+    background-color: #e0e0e0;
+}
